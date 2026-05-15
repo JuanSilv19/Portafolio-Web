@@ -11,12 +11,50 @@ function init() {
     applyTheme();
 }
 
+function getFixedWorks() {
+    return [
+        {
+            id: 1,
+            name: 'Infografía de Ciberseguridad',
+            description: 'Infografía sobre ciberseguridad realizada en el primer corte',
+            category: 'imagen',
+            date: '2026-05-15',
+            type: 'imagen',
+            url: 'media/Infografia de Ciberseguridad (1)_page-0001.jpg',
+            isFixed: true
+        },
+        {
+            id: 2,
+            name: 'Gráfica Matriz BCG',
+            description: 'Gráfica Matriz BCG Profesional realizada en el primer corte',
+            category: 'imagen',
+            date: '2026-05-15',
+            type: 'imagen',
+            url: 'media/Grafica Matriz BCG Profesional (1)_page-0001.jpg',
+            isFixed: true
+        },
+        {
+            id: 3,
+            name: 'Video Primer Corte',
+            description: 'Video realizado durante el primer corte de Contenidos Digitales',
+            category: 'video',
+            date: '2026-05-15',
+            type: 'video',
+            url: 'https://www.youtube.com/embed/9oOhJGo0gHA',
+            isEmbed: true,
+            isFixed: true
+        }
+    ];
+}
+
 function loadWorks() {
+    const fixedWorks = getFixedWorks();
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-        works = JSON.parse(stored);
+        const userWorks = JSON.parse(stored);
+        works = [...fixedWorks, ...userWorks];
     } else {
-        works = getDefaultWorks();
+        works = [...fixedWorks, ...getDefaultWorks()];
         saveWorks();
     }
 }
@@ -24,7 +62,7 @@ function loadWorks() {
 function getDefaultWorks() {
     return [
         {
-            id: 1,
+            id: 4,
             name: 'Diseño de Identidad Visual',
             description: 'Creación de identidad visual completa para una marca ficticia de tecnología sostenible, incluyendo logo, paleta de colores y tipografía.',
             category: 'diseño',
@@ -34,7 +72,7 @@ function getDefaultWorks() {
             isDefault: true
         },
         {
-            id: 2,
+            id: 5,
             name: 'Video Promocional',
             description: 'Video promocional de 30 segundos para campaña de conciencia ambiental.',
             category: 'video',
@@ -45,7 +83,7 @@ function getDefaultWorks() {
             isDefault: true
         },
         {
-            id: 3,
+            id: 6,
             name: 'Infografía Interactiva',
             description: 'Infografía digital sobre el impacto del cambio climático con elementos interactivos.',
             category: 'diseño',
@@ -55,7 +93,7 @@ function getDefaultWorks() {
             isDefault: true
         },
         {
-            id: 4,
+            id: 7,
             name: 'Fotografía Urbana',
             description: 'Serie de fotografías urbanas capturadas durante el proyecto de documentación visual de la ciudad.',
             category: 'imagen',
@@ -165,9 +203,15 @@ function openWorkModal(workId) {
 }
 
 function deleteWork(workId) {
+    const work = works.find(w => w.id === workId);
+    if (work && work.isFixed) {
+        alert('Este trabajo no se puede eliminar');
+        return;
+    }
     if (confirm('¿Estás seguro de que quieres eliminar este trabajo?')) {
         works = works.filter(w => w.id !== workId);
-        saveWorks();
+        const userWorks = works.filter(w => !w.isFixed);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userWorks));
         renderWorks();
     }
 }
@@ -315,7 +359,8 @@ function saveNewWork(name, description, category, date, type, url, isEmbed) {
     };
     
     works.unshift(newWork);
-    saveWorks();
+    const userWorks = works.filter(w => !w.isFixed);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userWorks));
     renderWorks();
     closeFormModal();
     resetForm();
