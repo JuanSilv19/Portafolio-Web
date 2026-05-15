@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenidos Digitales - Portafolio Académico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <span>Contenidos Digitales</span>
+        </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#trabajos">Trabajos</a>
+            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Mi Portafolio Académico</h1>
+            <p>Explora mis trabajos y proyectos realizados durante el curso de Contenidos Digitales</p>
+            <div class="student-info">
+                <div class="student-avatar">JS</div>
+                <div>
+                    <div class="student-name">Juan Sánchez</div>
+                    <div class="student-course">Estudiante | Contenidos Digitales 2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="trabajos">
+        <h2 class="section-title">Mis Trabajos</h2>
+        
+        <button class="add-btn" id="addWorkBtn">
+            <i class="fas fa-plus"></i>
+            Agregar nuevo trabajo
+        </button>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="imagen">Imágenes</button>
+            <button class="filter-btn" data-filter="video">Videos</button>
+            <button class="filter-btn" data-filter="diseño">Diseño</button>
+            <button class="filter-btn" data-filter="documento">Documentos</button>
+            <button class="filter-btn" data-filter="web">Proyectos Web</button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#"><i class="fas fa-graduation-cap"></i> Materia: Contenidos Digitales</a>
+            <a href="#"><i class="fas fa-calendar"></i> Ciclo 2026</a>
+            <a href="#"><i class="fas fa-envelope"></i> contacto@universidad.edu</a>
+        </div>
+        <p>© 2026 Portafolio Académico - Contenidos Digitales</p>
+    </footer>
+
+    <!-- Modal para ver trabajo -->
+    <div class="modal-overlay" id="viewModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Título del trabajo</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-media" id="modalMedia">
+                </div>
+                <div class="modal-details">
+                    <div class="modal-detail">
+                        <span class="modal-detail-label">Descripción:</span>
+                        <span id="modalDescription">Descripción del trabajo</span>
+                    </div>
+                    <div class="modal-detail">
+                        <span class="modal-detail-label">Categoría:</span>
+                        <span id="modalCategory">Categoría</span>
+                    </div>
+                    <div class="modal-detail">
+                        <span class="modal-detail-label">Fecha:</span>
+                        <span id="modalDate">Fecha</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar trabajo -->
+    <div class="modal-overlay" id="formModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Agregar Nuevo Trabajo</h3>
+                <button class="modal-close" id="closeFormModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="workForm">
+                    <div class="form-group">
+                        <label class="form-label">Nombre del trabajo *</label>
+                        <input type="text" class="form-input" id="workName" required placeholder="Ej: Diseño de Logo">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-textarea" id="workDescription" placeholder="Describe tu trabajo..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Categoría *</label>
+                        <select class="form-select" id="workCategory" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="imagen">Imagen</option>
+                            <option value="video">Video</option>
+                            <option value="diseño">Diseño</option>
+                            <option value="documento">Documento</option>
+                            <option value="web">Proyecto Web</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha de entrega</label>
+                        <input type="date" class="form-input" id="workDate">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Archivo o URL *</label>
+                        <div class="file-drop-zone" id="fileDropZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Arrastra un archivo o haz clic para seleccionar</p>
+                            <small>JPG, PNG, GIF, MP4, PDF o URL de video</small>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/*,video/*,.pdf" style="display: none;">
+                        <input type="url" class="form-input" id="urlInput" placeholder="O pega una URL (YouTube, Vimeo, imagen...)" style="margin-top: 1rem;">
+                        <div class="file-preview" id="filePreview" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
+                        <button type="submit" class="btn-submit">Guardar Trabajo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
