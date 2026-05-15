@@ -20,7 +20,7 @@ function getFixedWorks() {
             category: 'imagen',
             date: '2026-05-15',
             type: 'imagen',
-            url: 'media/Infografia de Ciberseguridad (1)_page-0001.jpg',
+            url: 'media/infografia.jpg',
             isFixed: true
         },
         {
@@ -30,7 +30,7 @@ function getFixedWorks() {
             category: 'imagen',
             date: '2026-05-15',
             type: 'imagen',
-            url: 'media/Grafica Matriz BCG Profesional (1)_page-0001.jpg',
+            url: 'media/matriz-bcg.jpg',
             isFixed: true
         },
         {
