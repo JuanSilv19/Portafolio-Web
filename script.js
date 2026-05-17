@@ -43,6 +43,56 @@ function getFixedWorks() {
             url: 'https://www.youtube.com/embed/9oOhJGo0gHA',
             isEmbed: true,
             isFixed: true
+        },
+        {
+            id: 8,
+            name: 'Quiz Matemático',
+            description: 'Quiz matemático interactivo realizado en Scratch',
+            category: 'web',
+            date: '2026-05-17',
+            type: 'web',
+            url: 'media/quiz_matematico.sb3.zip',
+            isFixed: true
+        },
+        {
+            id: 9,
+            name: 'Presentación App Inventor',
+            description: 'Presentación sobre App Inventor y Actividades Educativas',
+            category: 'documento',
+            date: '2026-05-17',
+            type: 'documento',
+            url: 'media/Presentación App Inventor.pdf',
+            isFixed: true
+        },
+        {
+            id: 10,
+            name: 'Trabajo MIT App',
+            description: 'Trabajo sobre MIT App Inventor',
+            category: 'documento',
+            date: '2026-05-17',
+            type: 'documento',
+            url: 'media/Trabajo MIT App.docx',
+            isFixed: true
+        },
+        {
+            id: 11,
+            name: 'Primer App',
+            description: 'Primera aplicación desarrollada en App Inventor',
+            category: 'web',
+            date: '2026-05-17',
+            type: 'web',
+            url: 'media/Primer_App.apk',
+            isFixed: true
+        },
+        {
+            id: 12,
+            name: 'Brújula App',
+            description: 'Aplicación de brújula desarrollada en App Inventor',
+            category: 'web',
+            date: '2026-05-17',
+            type: 'web',
+            url: 'media/Brujula.apk',
+            isFixed: true
         }
     ];
 }
