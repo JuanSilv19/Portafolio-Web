@@ -93,6 +93,26 @@ function getFixedWorks() {
             type: 'web',
             url: 'media/Brujula.apk',
             isFixed: true
+        },
+        {
+            id: 13,
+            name: 'Entrega 1 Portafolio Web',
+            description: 'Entrega 1 corte de Portafolio Web',
+            category: 'documento',
+            date: '2026-05-17',
+            type: 'documento',
+            url: 'Entrega1_PortafolioWeb.pdf',
+            isFixed: true
+        },
+        {
+            id: 14,
+            name: 'Actividad 4',
+            description: 'Entrega 1 corte de Portafolio Web',
+            category: 'documento',
+            date: '2026-05-17',
+            type: 'documento',
+            url: 'Actividad 4.docx',
+            isFixed: true
         }
     ];
 }
