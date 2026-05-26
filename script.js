@@ -288,7 +288,6 @@ function deleteWork(workId) {
 
 function setupEventListeners() {
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-    document.getElementById('addWorkBtn').addEventListener('click', () => openFormModal());
     document.getElementById('closeModal').addEventListener('click', closeViewModal);
     document.getElementById('viewModal').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) closeViewModal();

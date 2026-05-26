@@ -179,27 +179,6 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
-.add-btn {
-    background: var(--gradient);
-    color: white;
-    border: none;
-    padding: 0.875rem 1.75rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin: 0 auto 2rem;
-}
-
-.add-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-}
-
 .gallery {
     padding: 2rem;
     max-width: 1400px;
