@@ -698,3 +698,538 @@ footer a {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
+/* ===== ESTILOS ADICIONALES - REFACTORIZACIÓN RUBRICA ===== */
+
+.content-section {
+ padding: 4rem 2rem;
+ scroll-margin-top: 80px;
+}
+
+.content-section.phase-section {
+ background: transparent;
+}
+
+.section-container {
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+.hero-subtitle {
+ font-size: 1.1rem;
+ color: var(--text-light);
+ margin-bottom: 2.5rem;
+}
+
+.hero-extra {
+ display: flex;
+ gap: 1.5rem;
+ margin-top: 2rem;
+ justify-content: center;
+ flex-wrap: wrap;
+}
+
+.hero-extra .info-card {
+ max-width: 420px;
+ text-align: left;
+}
+
+.info-card-icon {
+ color: var(--primary);
+ font-size: 1.5rem;
+ margin-bottom: 0.75rem;
+}
+
+.quote-text {
+ font-style: italic;
+ font-size: 1rem;
+ line-height: 1.7;
+ color: var(--text);
+}
+
+.info-card h3 {
+ font-size: 1.1rem;
+ font-weight: 600;
+ margin-bottom: 1rem;
+ color: var(--text);
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+}
+
+.info-card h3 i {
+ color: var(--primary);
+}
+
+.info-card ul {
+ list-style: none;
+ padding: 0;
+}
+
+.info-card ul li {
+ padding: 0.4rem 0;
+ color: var(--text);
+ font-size: 0.95rem;
+ border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.info-card ul li:last-child {
+ border-bottom: none;
+}
+
+.divider {
+ border: none;
+ border-top: 1px solid rgba(0,0,0,0.08);
+ margin: 2rem 0;
+}
+
+.info-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+ gap: 1.5rem;
+ margin-bottom: 1.5rem;
+}
+
+.expectations-card {
+ text-align: center;
+}
+
+.expectations-card p {
+ max-width: 700px;
+ margin: 0 auto;
+ line-height: 1.8;
+}
+
+.social-buttons {
+ display: flex;
+ gap: 1rem;
+ justify-content: center;
+ margin-top: 1.5rem;
+ flex-wrap: wrap;
+}
+
+.social-btn {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.5rem;
+ padding: 0.75rem 1.5rem;
+ border-radius: 50px;
+ font-weight: 600;
+ font-size: 0.95rem;
+ text-decoration: none;
+ transition: all 0.3s;
+}
+
+.github-btn {
+ background: #24292e;
+ color: #fff;
+}
+
+.github-btn:hover {
+ background: #1b1f23;
+ transform: translateY(-2px);
+}
+
+.linkedin-btn {
+ background: #0a66c2;
+ color: #fff;
+}
+
+.linkedin-btn:hover {
+ background: #004182;
+ transform: translateY(-2px);
+}
+
+.intro-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+ gap: 1.5rem;
+ margin-top: 1.5rem;
+}
+
+.intro-card p {
+ line-height: 1.8;
+}
+
+.phase-title {
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.phase-badge {
+ background: var(--gradient);
+ color: #fff;
+ padding: 0.35rem 1rem;
+ border-radius: 50px;
+ font-size: 0.85rem;
+ font-weight: 600;
+}
+
+.phase-desc {
+ text-align: center;
+ color: var(--text-light);
+ margin-top: 0.5rem;
+ margin-bottom: 2rem;
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.concept-card h3 {
+ font-size: 1.2rem;
+}
+
+.concept-list {
+ list-style: none;
+ padding: 0;
+ margin: 1rem 0;
+}
+
+.concept-list li {
+ padding: 0.5rem 0;
+ padding-left: 1.5rem;
+ position: relative;
+ color: var(--text);
+}
+
+.concept-list li::before {
+ content: '▸';
+ position: absolute;
+ left: 0;
+ color: var(--primary);
+ font-weight: 700;
+}
+
+.concept-card p {
+ line-height: 1.8;
+}
+
+.iframe-wrapper {
+ display: flex;
+ justify-content: center;
+ margin-top: 2rem;
+ padding: 1.5rem;
+ background: var(--card-bg);
+ border-radius: 20px;
+ box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.iframe-wrapper iframe {
+ border-radius: 12px;
+ max-width: 100%;
+}
+
+.reflections-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 1.5rem;
+ margin-bottom: 2rem;
+}
+
+.reflection-card {
+ position: relative;
+ overflow: hidden;
+}
+
+.reflection-badge {
+ display: inline-block;
+ background: var(--primary);
+ color: #fff;
+ padding: 0.25rem 0.75rem;
+ border-radius: 50px;
+ font-size: 0.75rem;
+ font-weight: 600;
+ margin-bottom: 1rem;
+}
+
+.reflection-card h3 {
+ font-size: 1.05rem;
+ margin-bottom: 0.75rem;
+}
+
+.reflection-card p {
+ line-height: 1.7;
+ font-size: 0.95rem;
+}
+
+.learning-card {
+ background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
+.learning-card h3 {
+ color: var(--accent);
+}
+
+.learning-items {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 1rem;
+}
+
+.learning-item {
+ display: flex;
+ align-items: flex-start;
+ gap: 0.75rem;
+ padding: 0.75rem;
+}
+
+.learning-item i {
+ color: var(--accent);
+ font-size: 1.2rem;
+ margin-top: 0.1rem;
+}
+
+.learning-item span {
+ line-height: 1.5;
+}
+
+.grade-banner {
+ display: flex;
+ align-items: center;
+ gap: 2rem;
+ padding: 2rem;
+ background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
+ border-radius: 20px;
+ margin-bottom: 2rem;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.grade-circle {
+ width: 140px;
+ height: 140px;
+ border-radius: 50%;
+ background: var(--gradient);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ flex-shrink: 0;
+}
+
+.grade-number {
+ font-size: 3rem;
+ font-weight: 700;
+ line-height: 1;
+}
+
+.grade-label {
+ font-size: 0.8rem;
+ font-weight: 400;
+ opacity: 0.9;
+ margin-top: 0.25rem;
+}
+
+.grade-context {
+ max-width: 500px;
+ line-height: 1.7;
+ color: var(--text);
+}
+
+.qualitative-answers {
+ display: grid;
+ gap: 1.5rem;
+}
+
+.qa-card h3 {
+ font-size: 1.05rem;
+}
+
+.qa-text {
+ font-weight: 600;
+ margin-bottom: 0.75rem;
+ color: var(--text);
+}
+
+.qa-card p:last-child {
+ line-height: 1.8;
+}
+
+.ref-subtitle {
+ font-size: 1.15rem;
+ font-weight: 600;
+ color: var(--text);
+ margin: 2rem 0 1rem;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+}
+
+.ref-subtitle i {
+ color: var(--primary);
+}
+
+.references-list {
+ display: grid;
+ gap: 1rem;
+}
+
+.references-list.tools-list {
+ grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.ref-card {
+ display: flex;
+ align-items: flex-start;
+ gap: 1rem;
+ padding: 1.25rem !important;
+}
+
+.ref-icon {
+ font-size: 1.75rem;
+ color: var(--primary);
+ flex-shrink: 0;
+ margin-top: 0.1rem;
+}
+
+.ref-info {
+ font-size: 0.92rem;
+ line-height: 1.6;
+}
+
+.ref-info a {
+ color: var(--primary);
+ text-decoration: none;
+}
+
+.ref-info a:hover {
+ text-decoration: underline;
+}
+
+.bibliography {
+ max-width: 800px;
+}
+
+.ref-item {
+ padding: 0;
+ background: transparent;
+ box-shadow: none;
+}
+
+.ref-item p {
+ font-size: 0.92rem;
+ line-height: 1.7;
+ color: var(--text);
+}
+
+.proposals-card h3 {
+ color: var(--accent);
+}
+
+.proposals-card ul {
+ list-style: none;
+ padding: 0;
+}
+
+.proposals-card ul li {
+ padding: 0.5rem 0;
+ padding-left: 1.5rem;
+ position: relative;
+ color: var(--text);
+ line-height: 1.6;
+}
+
+.proposals-card ul li::before {
+ content: '▸';
+ position: absolute;
+ left: 0;
+ color: var(--accent);
+ font-weight: 700;
+}
+
+.student-details {
+ text-align: left;
+}
+
+.student-course {
+ color: var(--text-light);
+ font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+ .info-grid,
+ .intro-grid,
+ .reflections-grid,
+ .learning-items,
+ .references-list.tools-list {
+ grid-template-columns: 1fr;
+ }
+
+ .hero-extra {
+ flex-direction: column;
+ align-items: center;
+ }
+
+ .hero-extra .info-card {
+ max-width: 100%;
+ }
+
+ .grade-banner {
+ flex-direction: column;
+ text-align: center;
+ }
+
+ .content-section {
+ padding: 2.5rem 1rem;
+ }
+
+ .social-buttons {
+ flex-direction: column;
+ align-items: center;
+ }
+}
+
+/* ===== ESTILOS JUEGOS INTERACTIVOS FASE 2 ===== */
+
+.games-subtitle {
+ font-size: 1.3rem;
+ font-weight: 600;
+ color: var(--text);
+ margin: 2rem 0 1.5rem;
+ text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.5rem;
+}
+
+.games-subtitle i {
+ color: var(--primary);
+}
+
+.games-grid {
+ grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.game-card {
+ display: flex;
+ flex-direction: column;
+}
+
+.game-card h3 {
+ font-size: 1.05rem;
+}
+
+.game-desc {
+ font-size: 0.88rem;
+ color: var(--text-light);
+ margin-bottom: 0;
+ line-height: 1.5;
+}
+
+.game-card iframe {
+ box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+ .games-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .game-card iframe {
+ height: 420px !important;
+ }
+}

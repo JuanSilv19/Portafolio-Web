@@ -1,154 +1,429 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contenidos Digitales - Portafolio Académico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Contenidos Digitales - Portafolio Académico</title>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <div class="logo-icon">
-                <i class="fas fa-layer-group"></i>
-            </div>
-            <span>Contenidos Digitales</span>
-        </div>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#trabajos">Trabajos</a>
-            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
-                <i class="fas fa-moon"></i>
-            </button>
-        </nav>
-    </header>
+ <header>
+ <div class="logo">
+ <i class="fas fa-layer-group logo-icon"></i>
+ <span>Contenidos Digitales</span>
+ </div>
+ <nav>
+ <a href="#inicio">Inicio</a>
+ <a href="#presentacion">Presentación</a>
+ <a href="#introduccion">Introducción</a>
+ <a href="#fase1">Fase 1</a>
+ <a href="#fase2">Fase 2</a>
+ <a href="#fase3">Fase 3</a>
+ <a href="#fase4">Fase 4</a>
+ <a href="#reflexiones">Reflexiones</a>
+ <a href="#conclusiones">Conclusiones</a>
+ <a href="#autoevaluacion">Autoevaluación</a>
+ <a href="#referencias">Referencias</a>
+ <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+ <i class="fas fa-moon"></i>
+ </button>
+ </nav>
+ </header>
 
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1>Mi Portafolio Académico</h1>
-            <p>Explora mis trabajos y proyectos realizados durante el curso de Contenidos Digitales</p>
-            <div class="student-info">
-                <div class="student-avatar">JC</div>
-                <div class="student-avatar">DT</div>
-                <div>
-                    <div class="student-name">Juan Andres Cardenas Silva y Daniel Felipe Torres Durán</div>
-                    <div class="student-course">Estudiante | Contenidos Digitales 2026</div>
-                </div>
-            </div>
-        </div>
-    </section>
+ <main>
+ <!-- SECCIÓN 1: INICIO / HERO -->
+ <section class="hero" id="inicio">
+ <div class="hero-content">
+ <h1>Mi Portafolio Académico</h1>
+ <p class="hero-subtitle">Explora mis trabajos y proyectos realizados durante el curso de Contenidos Digitales</p>
+ <div class="student-info">
+ <div class="student-avatar">JC</div>
+ <div class="student-avatar">DT</div>
+ <div class="student-details">
+ <div class="student-name">Juan Andrés Cárdenas Silva y Daniel Felipe Torres Durán</div>
+ <div class="student-course">Estudiante | Contenidos Digitales 2026</div>
+ </div>
+ </div>
+ <div class="hero-extra">
+ <div class="info-card motivational-quote">
+ <i class="fas fa-quote-left info-card-icon"></i>
+ <p class="quote-text">"La tecnología no reemplaza la pedagogía; la transforma. Cada herramienta es una puerta para reinventar la forma en que aprendemos y creamos."</p>
+ </div>
+ <div class="info-card portfolio-summary">
+ <i class="fas fa-folder-open info-card-icon"></i>
+ <p><strong>Resumen del Portafolio:</strong> Este portafolio recopila el proceso formativo de Contenidos Digitales 2026, integrando infografías, prototipos interactivos, proyectos de programación y reflexiones críticas que evidencian el desarrollo de competencias digitales, pensamiento computacional y creatividad multimedia.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <section class="gallery" id="trabajos">
-        <h2 class="section-title">Mis Trabajos</h2>
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="imagen">Imágenes</button>
-            <button class="filter-btn" data-filter="video">Videos</button>
-            <button class="filter-btn" data-filter="diseño">Diseño</button>
-            <button class="filter-btn" data-filter="documento">Documentos</button>
-            <button class="filter-btn" data-filter="web">Proyectos Web</button>
-        </div>
+ <!-- SECCIÓN 2: PRESENTACIÓN -->
+ <section class="content-section" id="presentacion">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-user-circle"></i> Presentación</h2>
 
-        <div class="cards-grid" id="cardsGrid">
-        </div>
-    </section>
+ <div class="info-grid">
+ <div class="info-card">
+ <h3><i class="fas fa-id-card"></i> Datos Académicos</h3>
+ <ul>
+ <li><strong>Nombres:</strong> Juan Andrés Cárdenas Silva y Daniel Felipe Torres Durán</li>
+ <li><strong>Programa:</strong> Ingeniería de Sistemas</li>
+ <li><strong>Institución:</strong> UTS (Universidad Tecnológica de Santander)</li>
+ <li><strong>Materia:</strong> Contenidos Digitales</li>
+ <li><strong>Periodo:</strong> 2026</li>
+ <li><strong>Correo:</strong> dftorresduran@uts.edu.co y jacardenassilva@uts.edu.co</li>
+ </ul>
+ </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#"><i class="fas fa-graduation-cap"></i> Materia: Contenidos Digitales</a>
-            <a href="#"><i class="fas fa-calendar"></i> Ciclo 2026</a>
-            <a href="#"><i class="fas fa-envelope"></i> dftorresduran@uts.edu.co y jacardenassilva@uts.edu.co</a>
-        </div>
-        <p>© 2026 Portafolio Académico - Contenidos Digitales</p>
-    </footer>
+ <div class="info-card">
+ <h3><i class="fas fa-star"></i> Competencias Adquiridas</h3>
+ <ul>
+ <li>Diseño de infografías y materiales visuales digitales</li>
+ <li>Programación en bloques (Scratch) y Android (App Inventor)</li>
+ <li>Redacción de prompts efectivos para IA generativa</li>
+ <li>Edición y producción de contenido multimedia</li>
+ <li>Análisis estratégico con herramientas como Matriz BCG</li>
+ <li>Pensamiento crítico y reflexión pedagógica</li>
+ </ul>
+ </div>
+ </div>
 
-    <!-- Modal para ver trabajo -->
-    <div class="modal-overlay" id="viewModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">Título del trabajo</h3>
-                <button class="modal-close" id="closeModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-media" id="modalMedia">
-                </div>
-                <div class="modal-details">
-                    <div class="modal-detail">
-                        <span class="modal-detail-label">Descripción:</span>
-                        <span id="modalDescription">Descripción del trabajo</span>
-                    </div>
-                    <div class="modal-detail">
-                        <span class="modal-detail-label">Categoría:</span>
-                        <span id="modalCategory">Categoría</span>
-                    </div>
-                    <div class="modal-detail">
-                        <span class="modal-detail-label">Fecha:</span>
-                        <span id="modalDate">Fecha</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+ <div class="info-card expectations-card">
+ <h3><i class="fas fa-bullseye"></i> Expectativas del Curso</h3>
+ <p>Este portafolio representa un recorrido integral por las dimensiones de los contenidos digitales en la educación moderna. Se espera fortalecer las competencias en diseño visual, programación creativa, uso de inteligencia artificial y reflexión pedagógica, generando productos tangibles que evidencie el crecimiento académico y la capacidad de innovar en entornos tecnológicos.</p>
+ <div class="social-buttons">
+ <a href="https://github.com" target="_blank" class="social-btn github-btn">
+ <i class="fab fa-github"></i> GitHub
+ </a>
+ <a href="https://linkedin.com" target="_blank" class="social-btn linkedin-btn">
+ <i class="fab fa-linkedin"></i> LinkedIn
+ </a>
+ </div>
+ </div>
+ </div>
+</section>
 
-    <!-- Modal para agregar trabajo -->
-    <div class="modal-overlay" id="formModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Agregar Nuevo Trabajo</h3>
-                <button class="modal-close" id="closeFormModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="workForm">
-                    <div class="form-group">
-                        <label class="form-label">Nombre del trabajo *</label>
-                        <input type="text" class="form-input" id="workName" required placeholder="Ej: Diseño de Logo">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Descripción</label>
-                        <textarea class="form-textarea" id="workDescription" placeholder="Describe tu trabajo..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Categoría *</label>
-                        <select class="form-select" id="workCategory" required>
-                            <option value="">Selecciona una categoría</option>
-                            <option value="imagen">Imagen</option>
-                            <option value="video">Video</option>
-                            <option value="diseño">Diseño</option>
-                            <option value="documento">Documento</option>
-                            <option value="web">Proyecto Web</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Fecha de entrega</label>
-                        <input type="date" class="form-input" id="workDate">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Archivo o URL *</label>
-                        <div class="file-drop-zone" id="fileDropZone">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Arrastra un archivo o haz clic para seleccionar</p>
-                            <small>JPG, PNG, GIF, MP4, PDF o URL de video</small>
-                        </div>
-                        <input type="file" id="fileInput" accept="image/*,video/*,.pdf" style="display: none;">
-                        <input type="url" class="form-input" id="urlInput" placeholder="O pega una URL (YouTube, Vimeo, imagen...)" style="margin-top: 1rem;">
-                        <div class="file-preview" id="filePreview" style="display: none;">
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
-                        <button type="submit" class="btn-submit">Guardar Trabajo</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+ <!-- SECCIÓN 3: INTRODUCCIÓN -->
+ <section class="content-section" id="introduccion">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-book-open"></i> Introducción</h2>
 
-    <script src="script.js"></script>
+ <div class="info-card intro-card">
+ <h3><i class="fas fa-file-alt"></i> Descripción</h3>
+ <p>El presente portafolio académico recopila de manera sistemática el conjunto de actividades, proyectos y reflexiones desarrolladas durante el curso de <strong>Contenidos Digitales</strong> en el periodo 2026. A través de un proceso formativo estructurado en cuatro fases, se integran herramientas de diseño, programación, inteligencia artificial y análisis estratégico para construir una visión integral del ecosistema digital educativo.</p>
+ </div>
+
+ <div class="intro-grid">
+ <div class="info-card">
+ <h3><i class="fas fa-graduation-cap"></i> Propósito Pedagógico</h3>
+ <p>Fomentar la creación, producción y análisis de contenidos digitales desde una perspectiva crítica y creativa, preparando a los estudiantes para desenvolverse de manera efectiva en entornos tecnológicos cambiantes y para diseñar experiencias de aprendizaje significativas.</p>
+ </div>
+
+ <div class="info-card">
+ <h3><i class="fas fa-crosshairs"></i> Objetivos de Aprendizaje</h3>
+ <ul>
+ <li>Comprender los fundamentos de la comunicación digital y la narrativa multimedia.</li>
+ <li>Aplicar herramientas de diseño gráfico y animación en proyectos educativos.</li>
+ <li>Desarrollar aplicaciones interactivas mediante programación visual.</li>
+ <li>Evaluar el impacto de la IA generativa en los procesos de creación de contenido.</li>
+ <li>Demostrar competencias de reflexión crítica sobre la práctica pedagógica digital.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 4: FASE 1 -->
+ <section class="content-section phase-section" id="fase1">
+ <div class="section-container">
+ <h2 class="section-title phase-title" data-phase="1">
+ <span class="phase-badge">Fase 1</span> Diseño Visual e Información
+ </h2>
+ <p class="phase-desc">Herramientas de diseño gráfico, análisis estratégico y producción audiovisual inicial.</p>
+ <div class="cards-grid" id="gridFase1"></div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 5: FASE 2 - IA y Juegos Interactivos -->
+ <section class="content-section phase-section" id="fase2">
+ <div class="section-container">
+ <h2 class="section-title phase-title" data-phase="2">
+ <span class="phase-badge">Fase 2</span> IA y Programación
+ </h2>
+ <div class="info-card concept-card">
+ <h3><i class="fas fa-robot"></i> Anatomía de Prompts y Personalización</h3>
+ <p>La inteligencia artificial generativa revoluciona la manera en que los educadores y estudiantes crean contenido. En esta fase se exploran los <strong>prompts estructurados</strong> como herramientas de interacción con modelos de lenguaje, analizando su anatomía y potencialidad.</p>
+ <ul class="concept-list">
+ <li><strong>Contexto:</strong> Definir el rol y el escenario de la consulta.</li>
+ <li><strong>Tarea:</strong> Especificar claramente qué se solicita.</li>
+ <li><strong>Detalles:</strong> Agregar restricciones, formato y nivel de profundidad.</li>
+ <li><strong>Iteración:</strong> Refinar el prompt según las respuestas obtenidas.</li>
+ </ul>
+ </div>
+
+ <!-- Juegos Interactivos IA -->
+ <h3 class="games-subtitle"><i class="fas fa-gamepad"></i> Juegos Interactivos de IA</h3>
+ <div class="cards-grid games-grid">
+ <div class="info-card game-card">
+ <h3><i class="fas fa-palette"></i> Colores, Números y Animales</h3>
+ <p class="game-desc">Juego interactivo de inglés desarrollado con IA — Identifica colores, números y animales.</p>
+ <iframe src="genially_english_colors_numbers_animals.html" style="width: 100%; height: 480px; border: none; border-radius: 12px; background: #ffffff; margin-top: 15px;"></iframe>
+ </div>
+ <div class="info-card game-card">
+ <h3><i class="fas fa-map-marked-alt"></i> Símbolos y Regiones de Colombia</h3>
+ <p class="game-desc">Actividad interactiva sobre los símbolos y regiones de Colombia.</p>
+ <iframe src="wordwall_colombia_simbolos_regiones.html" style="width: 100%; height: 480px; border: none; border-radius: 12px; background: #ffffff; margin-top: 15px;"></iframe>
+ </div>
+ <div class="info-card game-card">
+ <h3><i class="fas fa-paw"></i> Animales y Hábitats</h3>
+ <p class="game-desc">Juego Kahoot sobre animales y sus hábitats naturales.</p>
+ <iframe src="kahoot_animales_habitats.html" style="width: 100%; height: 480px; border: none; border-radius: 12px; background: #ffffff; margin-top: 15px;"></iframe>
+ </div>
+ <div class="info-card game-card">
+ <h3><i class="fas fa-book-reader"></i> Lengua Castellana Primaria</h3>
+ <p class="game-desc">Quiz interactivo de Lengua Castellana para primaria.</p>
+ <iframe src="quizizz_lengua_castellana_primaria.html" style="width: 100%; height: 480px; border: none; border-radius: 12px; background: #ffffff; margin-top: 15px;"></iframe>
+ </div>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 6: FASE 3 -->
+ <section class="content-section phase-section" id="fase3">
+ <div class="section-container">
+ <h2 class="section-title phase-title" data-phase="3">
+ <span class="phase-badge">Fase 3</span> Scratch - Programación Visual
+ </h2>
+ <div class="info-card concept-card">
+ <h3><i class="fas fa-puzzle-piece"></i> Concepto de Scratch</h3>
+ <p><strong>Scratch</strong> es una plataforma de programación visual basada en bloques, desarrollada por el MIT Media Lab, que permite a estudiantes de todas las edades crear historias interactivas, juegos y animaciones sin necesidad de escribir código textual.</p>
+ <ul class="concept-list">
+ <li><strong>Bloques de programación:</strong> Elementos arrastrables que representan comandos lógicos.</li>
+ <li><strong>Scratchpad:</strong> Área de pruebas para experimentar con código.</li>
+ <li><strong>Comunidad:</strong> Espacio de compartición y colaboración entre creadores.</li>
+ <li><strong>Pensamiento computacional:</strong> Desarrollo de lógica, secuenciación y resolución de problemas.</li>
+ </ul>
+ </div>
+ <div class="cards-grid" id="gridFase3"></div>
+ <div class="iframe-wrapper">
+ <iframe src="https://scratch.mit.edu/projects/embed/1025877860/?autostart=false" width="485" height="402" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 7: FASE 4 -->
+ <section class="content-section phase-section" id="fase4">
+ <div class="section-container">
+ <h2 class="section-title phase-title" data-phase="4">
+ <span class="phase-badge">Fase 4</span> MIT App Inventor - Apps Móviles
+ </h2>
+ <div class="info-card concept-card">
+ <h3><i class="fas fa-mobile-alt"></i> Concepto de App Inventor</h3>
+ <p><strong>MIT App Inventor</strong> es un entorno de desarrollo visual para crear aplicaciones Android a través de bloques de programación. Facilita la transición desde la programación visual hacia el desarrollo móvil real.</p>
+ <ul class="concept-list">
+ <li><strong>Designer:</strong> Interfaz visual para diseñar la interfaz de la app.</li>
+ <li><strong>Blocks Editor:</strong> Editor de bloques para definir la lógica de la aplicación.</li>
+ <li><strong>Emulador / Wi-Fi:</strong> Métodos de conexión para probar apps en tiempo real.</li>
+ <li><strong>Componentes nativos:</strong> Acceso a sensores, GPS, multimedia y redes.</li>
+ </ul>
+ </div>
+ <div class="cards-grid" id="gridFase4"></div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 8: REFLEXIONES -->
+ <section class="content-section" id="reflexiones">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-lightbulb"></i> Reflexiones Críticas</h2>
+ <div class="reflections-grid">
+ <div class="info-card reflection-card">
+ <span class="reflection-badge">Fase 1</span>
+ <h3>Diseño Visual y Comunicación</h3>
+ <p>La primera fase me permitió comprender el poder del diseño gráfico como herramienta de comunicación efectiva. Al crear infografías y analizar la Matriz BCG, entendí que el diseño no es solo estética — es una estrategia para organizar información compleja de manera accesible y visualmente atractiva.</p>
+ </div>
+ <div class="info-card reflection-card">
+ <span class="reflection-badge">Fase 2</span>
+ <h3>Inteligencia Artificial</h3>
+ <p>Explorar la anatomía de los prompts transformó mi percepción sobre la IA generativa. Descubrí que la calidad de la respuesta depende directamente de la estructura y claridad de la consulta. Este aprendizaje me invita a ser un usuario crítico y responsable de la tecnología.</p>
+ </div>
+ <div class="info-card reflection-card">
+ <span class="reflection-badge">Fase 3</span>
+ <h3>Pensamiento Computacional</h3>
+ <p>Scratch me demostró que programar no requiere conocimiento avanzado de código. Los bloques visuales hicieron tangible conceptos abstractos como bucles, condicionales y eventos. Crear el quiz matemático me enseñó que la programación es un lenguaje más de expresión creativa.</p>
+ </div>
+ <div class="info-card reflection-card">
+ <span class="reflection-badge">Fase 4</span>
+ <h3>Desarrollo Móvil</h3>
+ <p>App Inventor representó un salto cualitativo hacia el desarrollo profesional. Pasar de bloques visuales a una aplicación instalable en Android fue increíblemente motivador. La Brújula App me mostró cómo las apps pueden resolver problemas cotidianos de forma elegante.</p>
+ </div>
+ </div>
+
+ <div class="info-card learning-card">
+ <h3><i class="fas fa-seedling"></i> Aprendizajes Significativos</h3>
+ <div class="learning-items">
+ <div class="learning-item"><i class="fas fa-check-circle"></i> <span>Integralidad de los contenidos digitales en la educación contemporánea.</span></div>
+ <div class="learning-item"><i class="fas fa-check-circle"></i> <span>Capacidad de elegir la herramienta adecuada según el objetivo pedagógico.</span></div>
+ <div class="learning-item"><i class="fas fa-check-circle"></i> <span>Importancia de la reflexión crítica como complemento obligatorio de la praxis.</span></div>
+ <div class="learning-item"><i class="fas fa-check-circle"></i> <span>Confianza para explorar nuevas tecnologías como agente de cambio educativo.</span></div>
+ <div class="learning-item"><i class="fas fa-check-circle"></i> <span>Valor de la colaboración y el aprendizaje basado en proyectos.</span></div>
+ </div>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 9: CONCLUSIONES -->
+ <section class="content-section" id="conclusiones">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-flag-checkered"></i> Conclusiones</h2>
+ <div class="info-card">
+ <h3>Síntesis del Proceso Formativo</h3>
+ <p>El recorrido por las cuatro fases de Contenidos Digitales 2026 ha representado una experiencia integral y transformadora. Comenzamos fortaleciendo nuestra capacidad de síntesis visual con infografías y análisis estratégicos (Fase 1), continuamos dominando la interacción con inteligencia artificial (Fase 2), exploramos la programación visual y el pensamiento computacional con Scratch (Fase 3), y culminamos desarrollando aplicaciones móviles funcionales con MIT App Inventor (Fase 4).</p>
+ <p>Cada fase nos retó a salir de la zona de confort, combinando teoría y práctica de manera autónoma y creativa. Hemos evidenciado la evolución desde la creación de piezas gráficas estáticas hasta la construcción de aplicaciones interactivas desplegables en dispositivos reales.</p>
+ </div>
+ <div class="info-card proposals-card">
+ <h3><i class="fas fa-arrow-alt-circle-up"></i> Propuestas de Mejora</h3>
+ <ul>
+ <li><strong>Profundización en animación:</strong> Incorporar herramientas como Adobe Animate o Blender.</li>
+ <li><strong>Proyecto colaborativo intergrupal:</strong> Diseñar un producto colectivo que combine todas las fases.</li>
+ <li><strong>Evaluación entre pares:</strong> Implementar rúbricas de coevaluación comunitaria.</li>
+ <li><strong>Publicación de repositorio:</strong> Centralizar trabajos en GitHub con documentación técnica.</li>
+ <li><strong>Integración de APIs públicas:</strong> Explorar datos abiertos en las aplicaciones móviles.</li>
+ </ul>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 10: AUTOEVALUACIÓN -->
+ <section class="content-section" id="autoevaluacion">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-clipboard-check"></i> Autoevaluación</h2>
+ <div class="grade-banner">
+ <div class="grade-circle">
+ <span class="grade-number">5.0</span>
+ <span class="grade-label">Nota Cuantitativa</span>
+ </div>
+ <p class="grade-context">Según la rúbrica de evaluación del curso — que pondera la calidad de los entregables, cumplimiento de requisitos, reflexión crítica y creatividad.</p>
+ </div>
+ <div class="qualitative-answers">
+ <div class="info-card qa-card">
+ <h3><i class="fas fa-question-circle"></i> Pregunta 1</h3>
+ <p class="qa-text"><strong>¿Cómo abordaste el desafío de crear contenidos digitales alineados con objetivos pedagógicos?</strong></p>
+ <p>Enfoqué cada entregable partiendo del objetivo pedagógico antes que de la herramienta. Al diseñar la infografía de ciberseguridad, prioricé la claridad conceptual y jerarquía visual. Utilicé la Matriz BCG como instrumento de análisis estratégico y seleccioné medios audiovisuales cuando el contenido lo requería. Esta orientación hacia el "qué" antes del "cómo" garantizó que cada pieza cumpliera su función educativa sin sacrificar el impacto visual.</p>
+ </div>
+ <div class="info-card qa-card">
+ <h3><i class="fas fa-question-circle"></i> Pregunta 2</h3>
+ <p class="qa-text"><strong>¿Cómo integraste las reflexiones pedagógicas en tu proceso creativo?</strong></p>
+ <p>Las reflexiones no fueron un ejercicio posterior, sino un hilo conductor desde la planificación. Después de cada fase, documenté insights sobre lo aprendido y las dificultades encontradas. Este hábito me permitió identificar patrones de mejora —como la necesidad de profundizar en animación— convirtiendo cada proyecto en un ciclo de mejora continua fundamentado pedagógicamente.</p>
+ </div>
+ <div class="info-card qa-card">
+ <h3><i class="fas fa-question-circle"></i> Pregunta 3</h3>
+ <p class="qa-text"><strong>¿Qué rol crees que desempeñan las herramientas digitales en tu formación profesional?</strong></p>
+ <p>Las herramientas digitales son extensiones de mi capacidad de crear, comunicar y resolver problemas. Desde la infografía hasta la app móvil, cada instrumento moldea la manera en que pienso el diseño de soluciones. El pensamiento lógico de Scratch aplica a cualquier lenguaje de programación, y la narrativa visual aprendida trasciende cualquier plataforma de diseño.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+ <!-- SECCIÓN 11: REFERENCIAS -->
+ <section class="content-section" id="referencias">
+ <div class="section-container">
+ <h2 class="section-title"><i class="fas fa-book"></i> Referencias</h2>
+ <h3 class="ref-subtitle"><i class="fas fa-tools"></i> Herramientas Digitales y Plataformas</h3>
+ <div class="references-list tools-list">
+ <div class="info-card ref-card">
+ <i class="fab fa-scratch ref-icon"></i>
+ <div class="ref-info">
+ <strong>Scratch</strong> — MIT Media Lab. (2023). Plataforma de programación visual por bloques. Recuperado de <a href="https://scratch.mit.edu" target="_blank">https://scratch.mit.edu</a>
+ </div>
+ </div>
+ <div class="info-card ref-card">
+ <i class="fas fa-mobile-alt ref-icon"></i>
+ <div class="ref-info">
+ <strong>MIT App Inventor</strong> — Massachusetts Institute of Technology. (2023). Entorno de desarrollo de aplicaciones Android. Recuperado de <a href="https://appinventor.mit.edu" target="_blank">https://appinventor.mit.edu</a>
+ </div>
+ </div>
+ </div>
+ <h3 class="ref-subtitle"><i class="fas fa-robot"></i> Plataformas de Inteligencia Artificial</h3>
+ <div class="references-list tools-list">
+ <div class="info-card ref-card">
+ <i class="fas fa-brain ref-icon"></i>
+ <div class="ref-info">
+ <strong>ChatGPT</strong> — OpenAI. (2024). Modelo de lenguaje avanzado para generación de texto. Recuperado de <a href="https://openai.com/chatgpt" target="_blank">https://openai.com/chatgpt</a>
+ </div>
+ </div>
+ <div class="info-card ref-card">
+ <i class="fas fa-palette ref-icon"></i>
+ <div class="ref-info">
+ <strong>DALL·E / Midjourney</strong> — Herramientas de generación de imágenes por IA. Recuperado de <a href="https://openai.com/dall-e" target="_blank">https://openai.com/dall-e</a>
+ </div>
+ </div>
+ </div>
+ <h3 class="ref-subtitle"><i class="fas fa-bookmark"></i> Bibliografía (APA 7.ª edición)</h3>
+ <div class="references-list bibliography">
+ <div class="ref-item"><p>Bower, M. (2017). <em>Design of Technology-Enhanced Learning</em>. BRILL.</p></div>
+ <div class="ref-item"><p>Calzadilla, M. (2022). El portafolio como herramienta de evaluación. <em>Revista Latinoamericana de Tecnología Educativa</em>, 21(1), 45-60.</p></div>
+ <div class="ref-item"><p>CSTA &amp; ISTE. (2011). <em>Operational Definition of Computational Thinking for K-12 Education</em>. CSTA.</p></div>
+ <div class="ref-item"><p>García-Peñalvo, F. J. (2023). La inteligencia artificial en la educación. <em>Education in the Knowledge Society</em>, 24, e30012.</p></div>
+ <div class="ref-item"><p>Henderson, S., &amp; Honan, E. (2020). Digital storytelling and multimodal literacy. <em>English Teaching &amp; Learning</em>, 44(2), 155-172.</p></div>
+ <div class="ref-item"><p>Maloy, R. W., et al. (2017). <em>Becoming a Digital Designer</em>. Springer.</p></div>
+ <div class="ref-item"><p>Resnick, M., et al. (2009). Scratch: Programming for all. <em>Communications of the ACM</em>, 52(11), 60-67.</p></div>
+ <div class="ref-item"><p>Salen, K., &amp; Zimmerman, E. (2003). <em>Rules of Play: Game Design Fundamentals</em>. MIT Press.</p></div>
+ <div class="ref-item"><p>Unsworth, L., &amp; Cleirigh, C. (2009). Multimodality and reading. <em>Handbook of Reading Research</em>, 4, 204-231.</p></div>
+ <div class="ref-item"><p>Wolz, U., &amp; Stone, A. (2020). App Inventor and block-based environments. <em>Communications of the ACM</em>, 63(6), 30-33.</p></div>
+ </div>
+ </div>
+</section>
+ </main>
+
+ <footer>
+ <div class="footer-links">
+ <a href="#"><i class="fas fa-graduation-cap"></i> Materia: Contenidos Digitales</a>
+ <a href="#"><i class="fas fa-calendar"></i> Ciclo 2026</a>
+ <a href="#"><i class="fas fa-envelope"></i> dftorresduran@uts.edu.co y jacardenassilva@uts.edu.co</a>
+ </div>
+ <p>© 2026 Portafolio Académico - Contenidos Digitales</p>
+ </footer>
+
+ <!-- Modal para ver trabajo -->
+ <div class="modal-overlay" id="viewModal">
+ <div class="modal">
+ <div class="modal-header">
+ <h3 class="modal-title" id="modalTitle">Título del trabajo</h3>
+ <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+ </div>
+ <div class="modal-body">
+ <div class="modal-media" id="modalMedia"></div>
+ <div class="modal-details">
+ <div class="modal-detail"><span class="modal-detail-label">Descripción:</span><span id="modalDescription">Descripción del trabajo</span></div>
+ <div class="modal-detail"><span class="modal-detail-label">Categoría:</span><span id="modalCategory">Categoría</span></div>
+ <div class="modal-detail"><span class="modal-detail-label">Fecha:</span><span id="modalDate">Fecha</span></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Modal para agregar trabajo -->
+ <div class="modal-overlay" id="formModal">
+ <div class="modal">
+ <div class="modal-header">
+ <h3 class="modal-title">Agregar Nuevo Trabajo</h3>
+ <button class="modal-close" id="closeFormModal"><i class="fas fa-times"></i></button>
+ </div>
+ <div class="modal-body">
+ <form id="workForm">
+ <div class="form-group"><label class="form-label">Nombre del trabajo *</label><input type="text" class="form-input" id="workName" required placeholder="Ej: Diseño de Logo"></div>
+ <div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" id="workDescription" placeholder="Describe tu trabajo..."></textarea></div>
+ <div class="form-group"><label class="form-label">Categoría *</label><select class="form-select" id="workCategory" required><option value="">Selecciona una categoría</option><option value="imagen">Imagen</option><option value="video">Video</option><option value="diseño">Diseño</option><option value="documento">Documento</option><option value="web">Proyecto Web</option></select></div>
+ <div class="form-group"><label class="form-label">Fecha de entrega</label><input type="date" class="form-input" id="workDate"></div>
+ <div class="form-group"><label class="form-label">Archivo o URL *</label><div class="file-drop-zone" id="fileDropZone"><i class="fas fa-cloud-upload-alt"></i><p>Arrastra un archivo o haz clic para seleccionar</p><small>JPG, PNG, GIF, MP4, PDF o URL de video</small></div><input type="file" id="fileInput" accept="image/*,video/*,.pdf" style="display: none;"><input type="url" class="form-input" id="urlInput" placeholder="O pega una URL (YouTube, Vimeo, imagen...)" style="margin-top: 1rem;"><div class="file-preview" id="filePreview" style="display: none;"></div></div>
+ <div class="form-actions"><button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button><button type="submit" class="btn-submit">Guardar Trabajo</button></div>
+ </form>
+ </div>
+ </div>
+ </div>
+
+ <script src="script.js"></script>
 </body>
 </html>

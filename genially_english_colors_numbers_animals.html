@@ -1,0 +1,481 @@
+
+<h2 class="sr-only">Interactive Genially-style English activity for primary school covering colors, numbers and animals vocabulary</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+#gn{font-family:var(--font-sans);padding:.5rem 0}
+.sc{display:none}.sc.on{display:block}
+.gb{border:none;cursor:pointer;font-weight:500;border-radius:var(--border-radius-md);transition:transform .15s;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sans)}
+.gb:hover{transform:scale(1.03)}.gb:active{transform:scale(.97)}
+.g-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;padding:.5rem .875rem;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg)}
+.g-logo{font-size:13px;font-weight:500;color:var(--color-text-secondary);display:flex;align-items:center;gap:6px}
+.g-stars{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;color:#BA7517}
+.g-home{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);padding:5px 12px;font-size:12px}
+.cover-top{text-align:center;padding:1.75rem 1rem 1.25rem}
+.cover-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 14px;border-radius:20px;background:#E6F1FB;color:#042C53;font-size:12px;font-weight:500;margin-bottom:1rem}
+.cover-title{font-size:26px;font-weight:500;color:var(--color-text-primary);margin-bottom:.375rem}
+.cover-sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem;line-height:1.7}
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.topic-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem .875rem;cursor:pointer;text-align:center;transition:border-color .15s,transform .15s}
+.topic-card:hover{transform:translateY(-2px)}
+.topic-card.t-col{border-top:3px solid #378ADD}
+.topic-card.t-num{border-top:3px solid #1D9E75}
+.topic-card.t-ani{border-top:3px solid #D85A30}
+.topic-ico{font-size:28px;margin-bottom:.5rem}
+.topic-t{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.topic-s{font-size:12px;color:var(--color-text-secondary);margin-top:3px}
+.topic-badge{display:inline-block;margin-top:.5rem;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px}
+.tb-col{background:#E6F1FB;color:#042C53}.tb-num{background:#EAF3DE;color:#173404}.tb-ani{background:#FAECE7;color:#4A1B0C}
+.final-btn{background:#534AB7;color:#EEEDFE;padding:11px 1.75rem;font-size:14px}
+
+.learn-hdr{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.learn-back{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);padding:6px 12px;font-size:12px}
+.learn-ttag{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+.lt-col{background:#E6F1FB;color:#042C53}.lt-num{background:#EAF3DE;color:#173404}.lt-ani{background:#FAECE7;color:#4A1B0C}
+.learn-prog{margin-left:auto;font-size:12px;color:var(--color-text-secondary)}
+
+.flash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.25rem}
+.flash-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem .75rem;text-align:center;cursor:pointer;transition:border-color .2s,transform .15s}
+.flash-card:hover{transform:scale(1.03)}
+.flash-swatch{width:52px;height:52px;border-radius:50%;margin:0 auto .5rem;border:0.5px solid var(--color-border-tertiary)}
+.flash-num{font-size:32px;font-weight:500;color:var(--color-text-primary);line-height:1;margin-bottom:.25rem}
+.flash-ani{font-size:34px;margin-bottom:.25rem}
+.flash-en{font-size:16px;font-weight:500;color:var(--color-text-primary)}
+.flash-es{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.flash-tip{font-size:11px;color:var(--color-text-secondary);text-align:center;margin-bottom:1rem;display:flex;align-items:center;gap:5px;justify-content:center}
+
+.game-sep{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.25rem 0}
+.game-label{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.game-q{font-size:17px;font-weight:500;color:var(--color-text-primary);margin-bottom:.875rem;display:flex;align-items:center;gap:10px}
+.game-swatch{width:40px;height:40px;border-radius:50%;border:0.5px solid var(--color-border-tertiary);flex-shrink:0}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.75rem 1rem;cursor:pointer;font-size:14px;font-weight:500;color:var(--color-text-primary);transition:background .12s,border-color .12s,transform .1s;display:flex;align-items:center;gap:8px;font-family:var(--font-sans)}
+.opt:hover{background:var(--color-background-secondary)}.opt:active{transform:scale(.98)}
+.opt.ok{background:#EAF3DE;border-color:#1D9E75;color:#085041}
+.opt.no{background:#FAECE7;border-color:#E24B4A;color:#4A1B0C;opacity:.65}
+.opt.reveal{background:#EAF3DE;border-color:#1D9E75;color:#085041}
+.gfb{padding:.625rem .875rem;border-radius:var(--border-radius-md);font-size:13px;margin-top:.625rem;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.gfb-ok{background:#EAF3DE;color:#085041;border:0.5px solid #9FE1CB}
+.gfb-no{background:#FAECE7;color:#4A1B0C;border:0.5px solid #F0997B}
+.next-btn{margin-top:.875rem;background:#378ADD;color:#E6F1FB;padding:9px 1.25rem;font-size:13px;width:100%}
+.nb-num{background:#1D9E75;color:#E1F5EE}
+.nb-ani{background:#D85A30;color:#FAECE7}
+
+.type-wrap{margin-bottom:1rem}
+.type-prompt{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:.75rem;display:flex;align-items:center;gap:10px}
+.type-ani-big{font-size:42px}
+.type-input-row{display:flex;gap:8px}
+.type-input-row input{flex:1;font-size:15px;font-family:var(--font-sans)}
+.type-submit{background:#534AB7;color:#EEEDFE;padding:8px 1.25rem;font-size:13px}
+.type-hint{font-size:12px;color:var(--color-text-secondary);margin-top:5px}
+
+.count-game{margin-bottom:.875rem}
+.count-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.875rem}
+.count-item{font-size:26px}
+.count-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.count-opt{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.625rem .5rem;cursor:pointer;font-size:16px;font-weight:500;color:var(--color-text-primary);text-align:center;transition:background .12s,border-color .12s;font-family:var(--font-sans)}
+.count-opt:hover{background:var(--color-background-secondary)}
+.count-opt.ok{background:#EAF3DE;border-color:#1D9E75;color:#085041}
+.count-opt.no{background:#FAECE7;border-color:#E24B4A;color:#4A1B0C;opacity:.65}
+.count-opt.reveal{background:#EAF3DE;border-color:#1D9E75;color:#085041}
+
+.end-wrap{text-align:center;padding:2rem 1.5rem}
+.end-ico{font-size:46px;color:#BA7517;display:block;margin-bottom:.875rem}
+.end-title{font-size:24px;font-weight:500;color:var(--color-text-primary);margin-bottom:.375rem}
+.end-pts{font-size:52px;font-weight:500;color:var(--color-text-primary)}
+.end-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:.375rem}
+.end-msg{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem;line-height:1.65}
+.end-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.es-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem;border:0.5px solid var(--color-border-tertiary)}
+.es-val{font-size:22px;font-weight:500;color:var(--color-text-primary)}.es-lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.end-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@keyframes pop{0%{transform:scale(.88);opacity:0}65%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pop{animation:pop .26s ease forwards}
+.bounce{animation:bounce .5s ease}
+</style>
+
+<div id="gn">
+
+<div class="g-nav">
+  <span class="g-logo"><i class="ti ti-language" style="font-size:16px" aria-hidden="true"></i> English Fun!</span>
+  <span class="g-stars"><i class="ti ti-star" style="font-size:14px" aria-hidden="true"></i> <span id="g-starcount">0</span> stars</span>
+  <button class="gb g-home" onclick="goHome()"><i class="ti ti-home" style="font-size:13px" aria-hidden="true"></i> Home</button>
+</div>
+
+<!-- COVER -->
+<div class="sc on" id="sc-cover">
+  <div class="cover-top">
+    <span class="cover-badge"><i class="ti ti-school" style="font-size:13px" aria-hidden="true"></i> Primary English · Level 1</span>
+    <p class="cover-title">Let's Learn English!</p>
+    <p class="cover-sub">Learn colors, numbers and animals in English.<br>Play games and earn stars! Ready?</p>
+  </div>
+  <div class="topic-grid">
+    <div class="topic-card t-col" onclick="gotoTopic('colors')">
+      <div class="topic-ico"><i class="ti ti-palette" style="font-size:28px;color:#378ADD" aria-hidden="true"></i></div>
+      <div class="topic-t">Colors</div>
+      <div class="topic-s">8 colors</div>
+      <span class="topic-badge tb-col">Flashcards + Quiz</span>
+    </div>
+    <div class="topic-card t-num" onclick="gotoTopic('numbers')">
+      <div class="topic-ico"><i class="ti ti-numbers" style="font-size:28px;color:#1D9E75" aria-hidden="true"></i></div>
+      <div class="topic-t">Numbers</div>
+      <div class="topic-s">1 to 10</div>
+      <span class="topic-badge tb-num">Flashcards + Count</span>
+    </div>
+    <div class="topic-card t-ani" onclick="gotoTopic('animals')">
+      <div class="topic-ico"><i class="ti ti-paw" style="font-size:28px;color:#D85A30" aria-hidden="true"></i></div>
+      <div class="topic-t">Animals</div>
+      <div class="topic-s">8 animals</div>
+      <span class="topic-badge tb-ani">Flashcards + Spell</span>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <button class="gb final-btn" onclick="startFinal()">
+      <i class="ti ti-trophy" aria-hidden="true"></i> Final Challenge — All topics!
+    </button>
+  </div>
+</div>
+
+<!-- COLORS -->
+<div class="sc" id="sc-colors">
+  <div class="learn-hdr">
+    <button class="gb learn-back" onclick="goHome()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back</button>
+    <span class="learn-ttag lt-col"><i class="ti ti-palette" style="font-size:13px" aria-hidden="true"></i> Colors</span>
+    <span class="learn-prog" id="col-prog">Game 1 of 8</span>
+  </div>
+  <p class="flash-tip"><i class="ti ti-eye" style="font-size:14px" aria-hidden="true"></i> Study the colors below, then answer the quiz!</p>
+  <div class="flash-grid" id="col-flash"></div>
+  <div class="game-sep"></div>
+  <div class="game-label"><i class="ti ti-help-circle" style="font-size:15px" aria-hidden="true"></i> What color is this?</div>
+  <div class="game-q"><div class="game-swatch" id="col-swatch"></div><span id="col-qtext">What color is this?</span></div>
+  <div class="opt-grid" id="col-opts"></div>
+  <div id="col-fb"></div>
+  <button class="gb next-btn" id="col-next" onclick="nextColor()" style="display:none"><i class="ti ti-arrow-right" aria-hidden="true"></i> Next color</button>
+</div>
+
+<!-- NUMBERS -->
+<div class="sc" id="sc-numbers">
+  <div class="learn-hdr">
+    <button class="gb learn-back" onclick="goHome()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back</button>
+    <span class="learn-ttag lt-num"><i class="ti ti-numbers" style="font-size:13px" aria-hidden="true"></i> Numbers</span>
+    <span class="learn-prog" id="num-prog">Game 1 of 10</span>
+  </div>
+  <p class="flash-tip"><i class="ti ti-eye" style="font-size:14px" aria-hidden="true"></i> Learn the numbers 1–10 in English!</p>
+  <div class="flash-grid" id="num-flash"></div>
+  <div class="game-sep"></div>
+  <div class="game-label"><i class="ti ti-calculator" style="font-size:15px" aria-hidden="true"></i> Count and choose the right number!</div>
+  <div class="count-game">
+    <div class="count-row" id="num-items"></div>
+    <div class="count-opts" id="num-opts"></div>
+  </div>
+  <div id="num-fb"></div>
+  <button class="gb next-btn nb-num" id="num-next" onclick="nextNumber()" style="display:none"><i class="ti ti-arrow-right" aria-hidden="true"></i> Next number</button>
+</div>
+
+<!-- ANIMALS -->
+<div class="sc" id="sc-animals">
+  <div class="learn-hdr">
+    <button class="gb learn-back" onclick="goHome()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back</button>
+    <span class="learn-ttag lt-ani"><i class="ti ti-paw" style="font-size:13px" aria-hidden="true"></i> Animals</span>
+    <span class="learn-prog" id="ani-prog">Animal 1 of 8</span>
+  </div>
+  <p class="flash-tip"><i class="ti ti-eye" style="font-size:14px" aria-hidden="true"></i> Learn the animals, then type their name!</p>
+  <div class="flash-grid" id="ani-flash"></div>
+  <div class="game-sep"></div>
+  <div class="game-label"><i class="ti ti-keyboard" style="font-size:15px" aria-hidden="true"></i> What animal is this? Type the word!</div>
+  <div class="type-wrap">
+    <div class="type-prompt"><span class="type-ani-big" id="ani-icon"></span><span id="ani-qtext">What is this animal?</span></div>
+    <div class="type-input-row">
+      <input type="text" id="ani-input" placeholder="Type in English..." maxlength="20" onkeydown="if(event.key==='Enter')checkAnimal()">
+      <button class="gb type-submit" onclick="checkAnimal()"><i class="ti ti-check" aria-hidden="true"></i> Check</button>
+    </div>
+    <div class="type-hint" id="ani-hint"></div>
+  </div>
+  <div id="ani-fb"></div>
+  <button class="gb next-btn nb-ani" id="ani-next" onclick="nextAnimal()" style="display:none"><i class="ti ti-arrow-right" aria-hidden="true"></i> Next animal</button>
+</div>
+
+<!-- FINAL CHALLENGE -->
+<div class="sc" id="sc-final">
+  <div class="learn-hdr">
+    <button class="gb learn-back" onclick="goHome()"><i class="ti ti-arrow-left" style="font-size:13px" aria-hidden="true"></i> Back</button>
+    <span class="learn-ttag" style="background:#EEEDFE;color:#26215C"><i class="ti ti-trophy" style="font-size:13px" aria-hidden="true"></i> Final Challenge</span>
+    <span class="learn-prog" id="fin-prog">1 of 12</span>
+  </div>
+  <div id="fin-badge" style="margin-bottom:.625rem"></div>
+  <div class="qcard-fin">
+    <div id="fin-visual" style="text-align:center;margin-bottom:.75rem;min-height:50px;display:flex;align-items:center;justify-content:center"></div>
+    <div class="game-q" style="justify-content:center" id="fin-q"></div>
+  </div>
+  <div id="fin-opts"></div>
+  <div id="fin-fb"></div>
+  <button class="gb next-btn" style="background:#534AB7;color:#EEEDFE;margin-top:.875rem" id="fin-next" onclick="nextFinal()" style="display:none"><i class="ti ti-arrow-right" aria-hidden="true"></i> Next question</button>
+</div>
+
+<!-- END -->
+<div class="sc" id="sc-end">
+  <div class="end-wrap">
+    <i class="ti ti-trophy end-ico" aria-hidden="true"></i>
+    <p class="end-title">Great job!</p>
+    <p class="end-pts" id="end-pts">0</p>
+    <p class="end-sub">stars earned</p>
+    <p class="end-msg" id="end-msg"></p>
+    <div class="end-stats">
+      <div class="es-card"><div class="es-val" id="es-ok">0</div><div class="es-lbl">Correct</div></div>
+      <div class="es-card"><div class="es-val" id="es-no">0</div><div class="es-lbl">Wrong</div></div>
+      <div class="es-card"><div class="es-val" id="es-stars">0</div><div class="es-lbl">Stars total</div></div>
+    </div>
+    <div class="end-btns">
+      <button class="gb" style="background:#378ADD;color:#E6F1FB;padding:11px 1.5rem;font-size:14px" onclick="goHome()"><i class="ti ti-home" aria-hidden="true"></i> Back to home</button>
+      <button class="gb" style="background:#1D9E75;color:#E1F5EE;padding:11px 1.5rem;font-size:14px" onclick="sendPrompt('Quiero practicar más vocabulario en inglés básico para primaria: frutas, ropa y partes del cuerpo. Hazme una actividad divertida.')">More topics ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+var COLORS=[
+  {en:'Red',es:'Rojo',hex:'#E24B4A'},{en:'Blue',es:'Azul',hex:'#378ADD'},
+  {en:'Yellow',es:'Amarillo',hex:'#EF9F27'},{en:'Green',es:'Verde',hex:'#639922'},
+  {en:'Orange',es:'Naranja',hex:'#D85A30'},{en:'Purple',es:'Morado',hex:'#7F77DD'},
+  {en:'Pink',es:'Rosado',hex:'#D4537E'},{en:'White',es:'Blanco',hex:'#e8e8e8'}
+];
+var NUMS=[
+  {n:1,en:'One'},{n:2,en:'Two'},{n:3,en:'Three'},{n:4,en:'Four'},{n:5,en:'Five'},
+  {n:6,en:'Six'},{n:7,en:'Seven'},{n:8,en:'Eight'},{n:9,en:'Nine'},{n:10,en:'Ten'}
+];
+var ANIMALS=[
+  {en:'Cat',es:'Gato',ico:'🐱'},{en:'Dog',es:'Perro',ico:'🐶'},
+  {en:'Bird',es:'Pájaro',ico:'🐦'},{en:'Fish',es:'Pez',ico:'🐟'},
+  {en:'Rabbit',es:'Conejo',ico:'🐰'},{en:'Horse',es:'Caballo',ico:'🐴'},
+  {en:'Elephant',es:'Elefante',ico:'🐘'},{en:'Lion',es:'León',ico:'🦁'}
+];
+
+var totalStars=0;
+var colIdx=0,numIdx=0,aniIdx=0;
+var colShuf=[],numShuf=[],aniShuf=[],finQs=[],finIdx=0;
+var finOk=0,finNo=0;
+
+function gSc(id){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on')});document.getElementById(id).classList.add('on')}
+function goHome(){gSc('sc-cover')}
+function updStars(){document.getElementById('g-starcount').textContent=totalStars}
+
+function shuffle(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
+function rndOpts(arr,correct,key,n){
+  var pool=arr.filter(function(x){return x[key]!==correct[key]});
+  var others=shuffle(pool).slice(0,n-1);
+  var all=shuffle([correct].concat(others));
+  return all;
+}
+
+/* ── COLORS ── */
+function gotoTopic(t){
+  if(t==='colors'){initColors()}
+  else if(t==='numbers'){initNumbers()}
+  else{initAnimals()}
+}
+
+function initColors(){
+  colShuf=shuffle(COLORS);colIdx=0;
+  var fc=document.getElementById('col-flash');fc.innerHTML='';
+  COLORS.forEach(function(c){
+    var d=document.createElement('div');d.className='flash-card pop';
+    var isW=c.hex==='#e8e8e8';
+    d.innerHTML='<div class="flash-swatch" style="background:'+c.hex+';'+(isW?'border:1.5px solid #ccc':'')+' "></div><div class="flash-en">'+c.en+'</div><div class="flash-es">'+c.es+'</div>';
+    fc.appendChild(d);
+  });
+  loadColorQ();
+  gSc('sc-colors');
+}
+
+function loadColorQ(){
+  if(colIdx>=colShuf.length){colIdx=0;colShuf=shuffle(COLORS)}
+  var q=colShuf[colIdx];
+  document.getElementById('col-prog').textContent='Game '+(colIdx+1)+' of '+COLORS.length;
+  var sw=document.getElementById('col-swatch');
+  var isW=q.hex==='#e8e8e8';
+  sw.style.background=q.hex;
+  if(isW)sw.style.border='1.5px solid #999';else sw.style.border='0.5px solid var(--color-border-tertiary)';
+  document.getElementById('col-qtext').textContent='What color is this?';
+  var opts=rndOpts(COLORS,q,'en',4);
+  var og=document.getElementById('col-opts');og.innerHTML='';
+  opts.forEach(function(o){
+    var b=document.createElement('button');b.className='opt pop';
+    b.innerHTML='<div style="width:16px;height:16px;border-radius:50%;background:'+o.hex+';flex-shrink:0;border:0.5px solid var(--color-border-tertiary)"></div>'+o.en;
+    b.onclick=function(){ansColor(o.en===q.en,b,q,og)};og.appendChild(b);
+  });
+  document.getElementById('col-fb').innerHTML='';
+  document.getElementById('col-next').style.display='none';
+}
+
+function ansColor(right,btn,q,og){
+  og.querySelectorAll('.opt').forEach(function(b){b.onclick=null;b.style.cursor='default'});
+  if(right){btn.classList.add('ok');totalStars+=1;updStars();showFb('col-fb',true,'Correct! '+q.en+' = '+q.es+' in Spanish. +1 star!')}
+  else{btn.classList.add('no');og.querySelectorAll('.opt').forEach(function(b){if(b.textContent.trim().endsWith(q.en))b.classList.add('reveal')});showFb('col-fb',false,'Not quite! The color is '+q.en+' ('+q.es+'). Try the next one!')}
+  document.getElementById('col-next').style.display='flex';
+}
+
+function nextColor(){colIdx++;loadColorQ()}
+
+/* ── NUMBERS ── */
+function initNumbers(){
+  numShuf=shuffle(NUMS);numIdx=0;
+  var fn=document.getElementById('num-flash');fn.innerHTML='';
+  NUMS.forEach(function(n){
+    var d=document.createElement('div');d.className='flash-card pop';
+    d.innerHTML='<div class="flash-num">'+n.n+'</div><div class="flash-en">'+n.en+'</div>';
+    fn.appendChild(d);
+  });
+  loadNumberQ();
+  gSc('sc-numbers');
+}
+
+function loadNumberQ(){
+  if(numIdx>=numShuf.length){numIdx=0;numShuf=shuffle(NUMS)}
+  var q=numShuf[numIdx];
+  document.getElementById('num-prog').textContent='Game '+(numIdx+1)+' of '+NUMS.length;
+  var row=document.getElementById('num-items');row.innerHTML='';
+  var icons=['⭐','🍎','🐟','🌸','🎈','🦋','🍭','🏀','🌈','🎵'];
+  var ico=icons[q.n-1]||'⭐';
+  for(var i=0;i<q.n;i++){var s=document.createElement('span');s.className='count-item';s.textContent=ico;row.appendChild(s)}
+  var pool=NUMS.filter(function(x){return x.n!==q.n});
+  var others=shuffle(pool).slice(0,3);
+  var all=shuffle([q].concat(others));
+  var og=document.getElementById('num-opts');og.innerHTML='';
+  all.forEach(function(o){
+    var b=document.createElement('button');b.className='count-opt pop';
+    b.innerHTML=o.n+'<br><span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">'+o.en+'</span>';
+    b.onclick=function(){ansNumber(o.n===q.n,b,q,og)};og.appendChild(b);
+  });
+  document.getElementById('num-fb').innerHTML='';
+  document.getElementById('num-next').style.display='none';
+}
+
+function ansNumber(right,btn,q,og){
+  og.querySelectorAll('.count-opt').forEach(function(b){b.onclick=null;b.style.cursor='default'});
+  if(right){btn.classList.add('ok');totalStars+=1;updStars();showFb('num-fb',true,'Yes! '+q.n+' = '+q.en+' in English. +1 star!')}
+  else{btn.classList.add('no');og.querySelectorAll('.count-opt').forEach(function(b){if(parseInt(b.textContent)===q.n)b.classList.add('reveal')});showFb('num-fb',false,'Almost! Count again — the answer is '+q.n+' = '+q.en+'!')}
+  document.getElementById('num-next').style.display='flex';
+}
+
+function nextNumber(){numIdx++;loadNumberQ()}
+
+/* ── ANIMALS ── */
+function initAnimals(){
+  aniShuf=shuffle(ANIMALS);aniIdx=0;
+  var fa=document.getElementById('ani-flash');fa.innerHTML='';
+  ANIMALS.forEach(function(a){
+    var d=document.createElement('div');d.className='flash-card pop';
+    d.innerHTML='<div class="flash-ani">'+a.ico+'</div><div class="flash-en">'+a.en+'</div><div class="flash-es">'+a.es+'</div>';
+    fa.appendChild(d);
+  });
+  loadAnimalQ();
+  gSc('sc-animals');
+}
+
+function loadAnimalQ(){
+  if(aniIdx>=aniShuf.length){aniIdx=0;aniShuf=shuffle(ANIMALS)}
+  var q=aniShuf[aniIdx];
+  document.getElementById('ani-prog').textContent='Animal '+(aniIdx+1)+' of '+ANIMALS.length;
+  document.getElementById('ani-icon').textContent=q.ico;
+  document.getElementById('ani-qtext').textContent='What is this animal?';
+  document.getElementById('ani-input').value='';
+  document.getElementById('ani-hint').innerHTML='Hint: it starts with <strong>'+q.en[0]+'</strong> — '+q.en.length+' letters';
+  document.getElementById('ani-fb').innerHTML='';
+  document.getElementById('ani-next').style.display='none';
+  setTimeout(function(){document.getElementById('ani-input').focus()},100);
+}
+
+function checkAnimal(){
+  var q=aniShuf[aniIdx];
+  var val=document.getElementById('ani-input').value.trim().toLowerCase();
+  if(!val)return;
+  document.getElementById('ani-input').disabled=true;
+  document.querySelector('.type-submit').disabled=true;
+  if(val===q.en.toLowerCase()){
+    totalStars+=2;updStars();
+    showFb('ani-fb',true,'Perfect spelling! '+q.ico+' = '+q.en+' ('+q.es+'). +2 stars!');
+  } else if(val[0]===q.en[0].toLowerCase()&&Math.abs(val.length-q.en.length)<=2){
+    totalStars+=1;updStars();
+    showFb('ani-fb',false,'Good try! The correct spelling is '+q.en+' ('+q.es+'). +1 star for trying!');
+  } else {
+    showFb('ani-fb',false,'The answer is '+q.en+' — '+q.ico+' in English. Practice makes perfect!');
+  }
+  document.getElementById('ani-next').style.display='flex';
+}
+
+function nextAnimal(){
+  document.getElementById('ani-input').disabled=false;
+  document.querySelector('.type-submit').disabled=false;
+  aniIdx++;loadAnimalQ();
+}
+
+/* ── FINAL CHALLENGE ── */
+function buildFinalQs(){
+  var qs=[];
+  shuffle(COLORS).slice(0,4).forEach(function(c){
+    qs.push({type:'color',q:'What color is this?',visual:'swatch',hex:c.hex,correct:c.en,opts:rndOpts(COLORS,c,'en',4).map(function(x){return x.en}),isW:c.hex==='#e8e8e8'});
+  });
+  shuffle(NUMS).slice(0,4).forEach(function(n){
+    var icons=['⭐','🍎','🐟','🌸','🎈','🦋','🍭','🏀','🌈','🎵'];
+    var ico=icons[n.n-1]||'⭐';
+    var items='';for(var i=0;i<n.n;i++)items+=ico+' ';
+    qs.push({type:'number',q:'How many? Choose the number word!',visual:'count',items:items,correct:n.en,opts:shuffle([n.en].concat(shuffle(NUMS.filter(function(x){return x.n!==n.n})).slice(0,3).map(function(x){return x.en})))});
+  });
+  shuffle(ANIMALS).slice(0,4).forEach(function(a){
+    qs.push({type:'animal',q:'What animal is this?',visual:'ico',ico:a.ico,correct:a.en,opts:shuffle([a.en].concat(shuffle(ANIMALS.filter(function(x){return x.en!==a.en})).slice(0,3).map(function(x){return x.en})))});
+  });
+  return shuffle(qs);
+}
+
+function startFinal(){
+  finQs=buildFinalQs();finIdx=0;finOk=0;finNo=0;
+  loadFinalQ();gSc('sc-final');
+}
+
+function loadFinalQ(){
+  if(finIdx>=finQs.length){showFinalEnd();return}
+  var q=finQs[finIdx];
+  document.getElementById('fin-prog').textContent=(finIdx+1)+' of '+finQs.length;
+  var badges={color:'<span style="background:#E6F1FB;color:#042C53;font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px"><i class=\'ti ti-palette\' style=\'font-size:13px\'></i> Colors</span>',number:'<span style="background:#EAF3DE;color:#173404;font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px"><i class=\'ti ti-numbers\' style=\'font-size:13px\'></i> Numbers</span>',animal:'<span style="background:#FAECE7;color:#4A1B0C;font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px"><i class=\'ti ti-paw\' style=\'font-size:13px\'></i> Animals</span>'};
+  document.getElementById('fin-badge').innerHTML=badges[q.type]||'';
+  var vis=document.getElementById('fin-visual');
+  if(q.type==='color'){vis.innerHTML='<div style="width:64px;height:64px;border-radius:50%;background:'+q.hex+';border:0.5px solid var(--color-border-tertiary)'+(q.isW?';border:1.5px solid #999':'')+';margin:0 auto"></div>'}
+  else if(q.type==='number'){vis.innerHTML='<div style="font-size:22px;letter-spacing:2px">'+q.items+'</div>'}
+  else{vis.innerHTML='<div style="font-size:54px">'+q.ico+'</div>'}
+  document.getElementById('fin-q').textContent=q.q;
+  var og=document.getElementById('fin-opts');og.innerHTML='';
+  og.style.display='grid';og.style.gridTemplateColumns='1fr 1fr';og.style.gap='8px';
+  q.opts.forEach(function(o){
+    var b=document.createElement('button');b.className='opt pop';b.textContent=o;
+    b.onclick=function(){ansFinal(o===q.correct,b,q,og)};og.appendChild(b);
+  });
+  document.getElementById('fin-fb').innerHTML='';
+  document.getElementById('fin-next').style.display='none';
+}
+
+function ansFinal(right,btn,q,og){
+  og.querySelectorAll('.opt').forEach(function(b){b.onclick=null;b.style.cursor='default'});
+  if(right){btn.classList.add('ok');finOk++;totalStars+=1;updStars();showFb('fin-fb',true,'Correct! Great job! +1 star')}
+  else{btn.classList.add('no');finNo++;og.querySelectorAll('.opt').forEach(function(b){if(b.textContent===q.correct)b.classList.add('reveal')});showFb('fin-fb',false,'The answer is: '+q.correct+'. Keep going!')}
+  document.getElementById('fin-next').style.display='flex';
+}
+
+function nextFinal(){finIdx++;loadFinalQ()}
+
+function showFinalEnd(){
+  document.getElementById('end-pts').textContent=totalStars;
+  document.getElementById('es-ok').textContent=finOk;
+  document.getElementById('es-no').textContent=finNo;
+  document.getElementById('es-stars').textContent=totalStars;
+  var p=finOk/finQs.length;
+  var msg=p===1?'WOW! Perfect score! You are an English superstar!':p>=.75?'Excellent work! You know your English vocabulary very well!':p>=.5?'Good job! Keep practicing and you will get better every day!':'Nice try! Study the flashcards again and play once more. You can do it!';
+  document.getElementById('end-msg').textContent=msg;
+  gSc('sc-end');
+}
+
+function showFb(id,good,msg){
+  document.getElementById(id).innerHTML='<div class="gfb '+(good?'gfb-ok':'gfb-no')+'"><i class="ti '+(good?'ti-circle-check':'ti-circle-x')+'" style="font-size:17px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i><span>'+msg+'</span></div>';
+}
+</script>

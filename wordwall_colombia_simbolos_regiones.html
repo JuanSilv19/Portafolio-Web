@@ -1,0 +1,394 @@
+
+<h2 class="sr-only">Actividad interactiva estilo Wordwall sobre símbolos patrios y regiones de Colombia para primaria</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+#ww{font-family:var(--font-sans);padding:.75rem 0}
+.sc{display:none}.sc.on{display:block}
+.pbtn{border:none;cursor:pointer;font-weight:500;border-radius:var(--border-radius-md);transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sans)}
+.pbtn:hover{transform:scale(1.03)}.pbtn:active{transform:scale(.97)}
+.btn-col{background:#C83E2B;color:#FAECE7;padding:12px 1.75rem;font-size:15px}
+.btn-col2{background:#1D9E75;color:#E1F5EE;padding:11px 1.5rem;font-size:14px}
+.btn-sm-o{background:var(--color-background-primary);color:var(--color-text-primary);border:0.5px solid var(--color-border-secondary);padding:8px 1.25rem;font-size:13px}
+
+/* ── COVER ── */
+.cover{text-align:center;padding:1.75rem 1.5rem}
+.cov-flag{display:flex;justify-content:center;margin-bottom:1.25rem}
+.flag{width:110px;height:70px;border-radius:var(--border-radius-md);overflow:hidden;border:1px solid var(--color-border-tertiary);display:flex;flex-direction:column}
+.f-y{flex:2;background:#FDD835}.f-b{flex:1;background:#1565C0}.f-r{flex:1;background:#C62828}
+.cov-title{font-size:25px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem}
+.cov-sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.7}
+.modes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.75rem;max-width:560px;margin-left:auto;margin-right:auto}
+.mcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;cursor:pointer;transition:border-color .15s,transform .15s;text-align:center}
+.mcard:hover{border-color:#C83E2B;transform:translateY(-2px)}
+.mcard.sel{border:2px solid #C83E2B;background:#FAECE7}
+.mcard-ico{font-size:26px;color:#C83E2B;margin-bottom:.5rem}
+.mcard-t{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.mcard-s{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+
+/* ── SHARED QUIZ ── */
+.qhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.qcnt{font-size:13px;color:var(--color-text-secondary)}
+.xpd{font-size:14px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:5px}
+.stk-b{font-size:12px;font-weight:500;padding:3px 9px;border-radius:var(--border-radius-md);background:#FAC775;color:#412402;display:inline-flex;align-items:center;gap:4px}
+.pdots{display:flex;gap:4px;margin-bottom:.75rem;flex-wrap:wrap}
+.dot{height:6px;border-radius:3px;flex:1;transition:background .3s}
+.dot-idle{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+.dot-on{background:#C83E2B}.dot-ok{background:#1D9E75}.dot-no{background:#E24B4A}
+.trow{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
+.tbar-bg{height:8px;background:var(--color-background-secondary);border-radius:4px;border:0.5px solid var(--color-border-tertiary);overflow:hidden;margin-bottom:.875rem}
+.tbar{height:100%;border-radius:4px;transition:width 1s linear,background .4s}
+.qbadge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--border-radius-md);font-size:12px;font-weight:500;margin-bottom:.625rem}
+.qb-pat{background:#FAECE7;color:#4A1B0C}.qb-reg{background:#E1F5EE;color:#04342C}.qb-match{background:#E6F1FB;color:#042C53}
+.qcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.125rem 1.25rem;margin-bottom:.75rem;min-height:90px;display:flex;align-items:center;justify-content:center;text-align:center}
+.qtext{font-size:18px;font-weight:500;color:var(--color-text-primary);line-height:1.45}
+.qimg{font-size:52px;margin-bottom:.375rem}
+.answers{display:flex;flex-direction:column;gap:7px}
+.acard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-left:3px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:.8rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .12s,border-color .12s,transform .1s;font-size:14px;color:var(--color-text-primary);width:100%;text-align:left;line-height:1.4;font-family:var(--font-sans)}
+.acard:hover{background:var(--color-background-secondary)}.acard:active{transform:scale(.99)}
+.albl{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);background:var(--color-background-secondary)}
+.acard-A{border-left-color:#534AB7}.acard-B{border-left-color:#0F6E56}
+.acard-C{border-left-color:#854F0B}.acard-D{border-left-color:#993C1D}
+.acard.is-ok{background:#EAF3DE;border-color:#1D9E75;border-left-width:4px}
+.acard.is-ok .albl{background:#1D9E75;color:#E1F5EE;border-color:#1D9E75}
+.acard.is-no{background:#FAECE7;border-color:#D85A30;border-left-width:4px;opacity:.65}
+.acard.is-no .albl{background:#D85A30;color:#FAECE7;border-color:#D85A30}
+.acard.is-rev{background:#EAF3DE;border-color:#1D9E75;border-left-width:4px}
+.acard.is-rev .albl{background:#1D9E75;color:#E1F5EE;border-color:#1D9E75}
+.acard.is-dim{opacity:.35}
+.fb{display:flex;align-items:flex-start;gap:8px;padding:.75rem 1rem;border-radius:var(--border-radius-md);margin-top:.625rem;font-size:13px;line-height:1.6}
+.fb-ok{background:#EAF3DE;color:#085041;border:0.5px solid #9FE1CB}
+.fb-no{background:#FAECE7;color:#4A1B0C;border:0.5px solid #F0997B}
+.fb-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+
+/* ── MATCH GAME ── */
+.match-instr{font-size:13px;color:var(--color-text-secondary);margin-bottom:.875rem;text-align:center;display:flex;align-items:center;gap:6px;justify-content:center}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.match-col-hdr{font-size:12px;font-weight:500;color:var(--color-text-secondary);padding:.375rem .625rem;border-radius:var(--border-radius-md);background:var(--color-background-secondary);text-align:center;margin-bottom:4px}
+.mcol{display:flex;flex-direction:column;gap:6px}
+.mtile{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.625rem .875rem;cursor:pointer;font-size:13px;color:var(--color-text-primary);transition:border-color .15s,background .15s,transform .1s;min-height:46px;display:flex;align-items:center;gap:7px;line-height:1.35}
+.mtile:hover{border-color:#C83E2B;background:var(--color-background-secondary)}
+.mtile.sel{border:2px solid #C83E2B;background:#FAECE7;color:#4A1B0C}
+.mtile.matched{background:#EAF3DE;border-color:#1D9E75;color:#085041;cursor:default}
+.mtile.wrong{background:#FAECE7;border-color:#E24B4A;animation:shake .35s}
+.mtile.used{opacity:.3;pointer-events:none}
+.match-score{text-align:center;font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:.875rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.match-pts{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+
+/* ── RESULT ── */
+.result-wrap{text-align:center;padding:1.75rem 1.5rem}
+.rnk{display:inline-block;padding:5px 16px;border-radius:var(--border-radius-md);font-size:13px;font-weight:500;margin-bottom:.75rem;background:#FAECE7;color:#4A1B0C}
+.bigsc{font-size:50px;font-weight:500;color:var(--color-text-primary)}
+.rmsg{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem;line-height:1.65}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.scard{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem;border:0.5px solid var(--color-border-tertiary)}
+.sval{font-size:21px;font-weight:500;color:var(--color-text-primary)}.slbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.btns-end{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+@keyframes pop{0%{transform:scale(.88);opacity:0}65%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.pop{animation:pop .26s ease forwards}
+</style>
+
+<div id="ww">
+
+<!-- COVER -->
+<div class="sc on" id="ww-cover">
+  <div class="cover">
+    <div class="cov-flag"><div class="flag"><div class="f-y"></div><div class="f-b"></div><div class="f-r"></div></div></div>
+    <p class="cov-title">Colombia: Símbolos y Regiones</p>
+    <p class="cov-sub">¡Aprende sobre la bandera, el himno, el escudo<br>y las 6 regiones naturales de Colombia!<br>Elige un modo de juego para comenzar.</p>
+    <div class="modes">
+      <div class="mcard" id="m1" onclick="selMode(1)">
+        <div class="mcard-ico"><i class="ti ti-flag" aria-hidden="true"></i></div>
+        <div class="mcard-t">Quiz Símbolos</div>
+        <div class="mcard-s">10 preguntas</div>
+      </div>
+      <div class="mcard" id="m2" onclick="selMode(2)">
+        <div class="mcard-ico"><i class="ti ti-map-2" aria-hidden="true"></i></div>
+        <div class="mcard-t">Quiz Regiones</div>
+        <div class="mcard-s">8 preguntas</div>
+      </div>
+      <div class="mcard" id="m3" onclick="selMode(3)">
+        <div class="mcard-ico"><i class="ti ti-arrows-exchange" aria-hidden="true"></i></div>
+        <div class="mcard-t">¡Emparejar!</div>
+        <div class="mcard-s">Une cada par</div>
+      </div>
+    </div>
+    <button class="pbtn btn-col" id="startBtn" onclick="launch()" style="opacity:.4;pointer-events:none">
+      <i class="ti ti-player-play" aria-hidden="true"></i> ¡Jugar ahora!
+    </button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="sc" id="ww-quiz">
+  <div class="qhdr">
+    <span class="qcnt" id="ww-cnt">1 / 10</span>
+    <span class="xpd"><i class="ti ti-star" style="font-size:14px;color:#BA7517" aria-hidden="true"></i><span id="ww-pts">0 pts</span></span>
+    <span id="ww-stk"></span>
+  </div>
+  <div class="pdots" id="ww-dots"></div>
+  <div class="trow"><span>Tiempo</span><span id="ww-tsec">20s</span></div>
+  <div class="tbar-bg"><div class="tbar" id="ww-tbar" style="width:100%;background:#C83E2B"></div></div>
+  <div id="ww-badge"></div>
+  <div class="qcard" id="ww-qcard"><div><div id="ww-qimg"></div><p class="qtext" id="ww-qtext"></p></div></div>
+  <div class="answers" id="ww-answers"></div>
+  <div id="ww-fb"></div>
+</div>
+
+<!-- MATCH -->
+<div class="sc" id="ww-match">
+  <div class="qhdr">
+    <span class="qcnt">¡Une cada símbolo con su descripción!</span>
+    <span id="ww-mpts" class="match-pts"><i class="ti ti-star" style="font-size:13px;color:#BA7517" aria-hidden="true"></i> 0 pts</span>
+  </div>
+  <div class="match-score" id="ww-mprog">0 de 8 parejas encontradas</div>
+  <div class="match-instr"><i class="ti ti-hand-click" style="font-size:15px" aria-hidden="true"></i> Toca un elemento de cada columna para emparejarlos</div>
+  <div class="match-grid">
+    <div><div class="match-col-hdr"><i class="ti ti-flag" style="font-size:13px" aria-hidden="true"></i> Símbolo o región</div><div class="mcol" id="ww-mcol1"></div></div>
+    <div><div class="match-col-hdr"><i class="ti ti-book" style="font-size:13px" aria-hidden="true"></i> Descripción</div><div class="mcol" id="ww-mcol2"></div></div>
+  </div>
+  <div id="ww-mfb" style="margin-top:.875rem"></div>
+</div>
+
+<!-- RESULT -->
+<div class="sc" id="ww-end">
+  <div class="result-wrap">
+    <i class="ti ti-trophy" style="font-size:46px;color:#BA7517;display:block;margin-bottom:.875rem" aria-hidden="true"></i>
+    <span class="rnk" id="ww-rank">Guardián de Colombia</span>
+    <p class="bigsc" id="ww-fsc">0</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:.5rem">puntos</p>
+    <p class="rmsg" id="ww-rmsg"></p>
+    <div class="statrow">
+      <div class="scard"><div class="sval" id="ww-tok">0</div><div class="slbl">Correctas</div></div>
+      <div class="scard"><div class="sval" id="ww-tno">0</div><div class="slbl">Incorrectas</div></div>
+      <div class="scard"><div class="sval" id="ww-tstk">0</div><div class="slbl">Mejor racha</div></div>
+    </div>
+    <div class="btns-end">
+      <button class="pbtn btn-col" onclick="goHome()"><i class="ti ti-home" aria-hidden="true"></i> Inicio</button>
+      <button class="pbtn btn-col2" onclick="sendPrompt('Cuéntame más datos curiosos sobre los símbolos patrios y las regiones de Colombia de forma divertida para niños.')">¡Más sobre Colombia! <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+var SQ=[
+  {tp:"pat",img:"🇨🇴",t:"¿Cuántas franjas tiene la bandera de Colombia?",a:["Dos franjas","Tres franjas","Cuatro franjas","Cinco franjas"],c:1,fb:"¡Correcto! La bandera tiene 3 franjas: amarilla (la más grande), azul y roja."},
+  {tp:"pat",img:"🟡",t:"¿Qué representa el color AMARILLO de la bandera colombiana?",a:["El mar Caribe","La sangre de los héroes","La riqueza y el oro de Colombia","El cielo colombiano"],c:2,fb:"¡Exacto! El amarillo representa las riquezas naturales y el oro de nuestra tierra."},
+  {tp:"pat",img:"🔵",t:"¿Qué representa el color AZUL de la bandera de Colombia?",a:["Los ríos y los mares","El cielo despejado","La paz y la tranquilidad","Los bosques colombianos"],c:0,fb:"¡Muy bien! El azul representa los mares, ríos y cielos de Colombia."},
+  {tp:"pat",img:"🔴",t:"¿Qué representa el color ROJO en nuestra bandera?",a:["Los volcanes activos","La sangre de los héroes que dieron la independencia","Los frutos tropicales","El calor del trópico"],c:1,fb:"¡Correcto! El rojo honra la sangre derramada por los héroes de la independencia."},
+  {tp:"pat",img:"🎵",t:"¿Cómo se llama el himno nacional de Colombia?",a:["Oh Gloria Inmarcesible","Colombia Tierra Querida","Patria Colombiana","Alma Llanera"],c:0,fb:"¡Sí! El himno se llama 'Oh Gloria Inmarcesible' y se canta en actos oficiales."},
+  {tp:"pat",img:"🦅",t:"¿Qué animal aparece en el centro del escudo nacional de Colombia?",a:["Un jaguar","Un cóndor","Un quetzal","Un águila"],c:1,fb:"¡Bien! El cóndor es el ave emblema de Colombia y aparece en la cima del escudo."},
+  {tp:"pat",img:"⚖️",t:"¿Qué símbolo aparece en la parte inferior del escudo nacional?",a:["Una espada cruzada","Una corona de laurel","El Sombrero vueltiao","Una cornucopia con frutas"],c:3,fb:"¡Exacto! La cornucopia (cuerno de la abundancia) simboliza la riqueza de Colombia."},
+  {tp:"pat",img:"📅",t:"¿En qué fecha se celebra el Día de la Independencia de Colombia?",a:["20 de Julio","7 de Agosto","12 de Octubre","16 de Noviembre"],c:0,fb:"¡Muy bien! El 20 de Julio de 1810 Colombia declaró su independencia de España."},
+  {tp:"pat",img:"🌸",t:"¿Cuál es la flor nacional de Colombia?",a:["La rosa roja","El girasol","La orquídea (Cattleya trianae)","El tulipán amarillo"],c:2,fb:"¡Correcto! La orquídea Cattleya trianae es la flor nacional. ¡Colombia tiene más de 4.000 especies!"},
+  {tp:"pat",img:"🦁",t:"¿Qué hay en el centro del escudo nacional de Colombia?",a:["Un barco en el mar","La ciudad de Bogotá","Una granada de oro abierta","El volcán Nevado del Ruiz"],c:2,fb:"¡Correcto! La granada de oro representa la antigua provincia de Granada, nombre colonial de Colombia."}
+];
+
+var RQ=[
+  {tp:"reg",img:"🌊",t:"¿Cómo se llama la región donde está Cartagena de Indias y hay mar Caribe?",a:["Región Andina","Región Caribe","Región Pacífica","Región Orinoquía"],c:1,fb:"¡Bien! La Región Caribe incluye ciudades como Cartagena, Santa Marta y Barranquilla."},
+  {tp:"reg",img:"⛰️",t:"Bogotá, Medellín y Cali están en la región con las tres cordilleras. ¿Cuál es?",a:["Región Pacífica","Región Amazónica","Región Andina","Región Insular"],c:2,fb:"¡Exacto! La Región Andina es la más poblada de Colombia y tiene las tres cordilleras."},
+  {tp:"reg",img:"🌿",t:"¿Cuál es la región de Colombia cubierta por la selva amazónica?",a:["Región Orinoquía","Región Amazónica","Región Caribe","Región Pacífica"],c:1,fb:"¡Muy bien! La Región Amazónica cubre el sur de Colombia y tiene la selva más grande del mundo."},
+  {tp:"reg",img:"🐊",t:"Los Llanos Orientales con los ríos Meta y Orinoco pertenecen a esta región:",a:["Región Andina","Región Amazónica","Región Caribe","Región Orinoquía"],c:3,fb:"¡Correcto! La Orinoquía tiene grandes llanuras y es hogar del chigüiro y del caimán."},
+  {tp:"reg",img:"🏝️",t:"San Andrés y Providencia son islas colombianas en el Caribe. ¿A qué región pertenecen?",a:["Región Caribe","Región Insular","Región Pacífica","Región Andina"],c:1,fb:"¡Bien! La Región Insular incluye las islas de San Andrés, Providencia y Santa Catalina."},
+  {tp:"reg",img:"🐋",t:"¿En qué región de Colombia llegan las ballenas jorobadas cada año?",a:["Región Caribe","Región Amazónica","Región Pacífica","Región Orinoquía"],c:2,fb:"¡Sí! El Pacífico colombiano es famoso porque cada año llegan ballenas jorobadas a tener sus crías."},
+  {tp:"reg",img:"🌺",t:"¿Cuántas regiones naturales tiene Colombia en total?",a:["Cuatro regiones","Cinco regiones","Seis regiones","Siete regiones"],c:2,fb:"¡Correcto! Colombia tiene 6 regiones: Andina, Caribe, Pacífica, Amazónica, Orinoquía e Insular."},
+  {tp:"reg",img:"🦜",t:"¿En qué región está el río Amazonas que comparte Colombia, Perú y Brasil?",a:["Región Andina","Región Orinoquía","Región Amazónica","Región Caribe"],c:2,fb:"¡Muy bien! El río Amazonas pasa por el sur de Colombia, en la Región Amazónica."}
+];
+
+var MATCH_PAIRS=[
+  {l:"Bandera de Colombia",r:"Tiene franjas amarilla, azul y roja"},
+  {l:"Orquídea",r:"Flor nacional de Colombia"},
+  {l:"Cóndor",r:"Ave que aparece en el escudo nacional"},
+  {l:"20 de Julio",r:"Día de la Independencia"},
+  {l:"Región Andina",r:"Tiene las tres cordilleras y Bogotá"},
+  {l:"San Andrés",r:"Isla colombiana en el Caribe"},
+  {l:"Orinoquía",r:"Región de los Llanos Orientales"},
+  {l:"Himno Nacional",r:"Se llama Oh Gloria Inmarcesible"}
+];
+
+var LBLS=["A","B","C","D"];
+var curMode=0,qs=[],cur=0,score=0,ok=0,no=0,stk=0,best=0,tl=20,tmr=null,done=false;
+var mSel1=-1,mSel2=-1,mPts=0,mFound=0,mOrder1=[],mOrder2=[];
+
+function selMode(m){
+  curMode=m;
+  document.querySelectorAll('.mcard').forEach(function(c){c.classList.remove('sel')});
+  document.getElementById('m'+m).classList.add('sel');
+  var btn=document.getElementById('startBtn');
+  btn.style.opacity='1';btn.style.pointerEvents='auto';
+}
+
+function launch(){
+  if(!curMode)return;
+  if(curMode===3){startMatch();return}
+  qs=curMode===1?SQ.slice():RQ.slice();
+  cur=0;score=0;ok=0;no=0;stk=0;best=0;
+  buildDots();
+  wSc('ww-quiz');loadQ();
+}
+
+function wSc(id){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on')});document.getElementById(id).classList.add('on')}
+
+function buildDots(){
+  var c=document.getElementById('ww-dots');c.innerHTML='';
+  qs.forEach(function(_,i){var d=document.createElement('div');d.className='dot dot-idle';d.id='wd'+i;c.appendChild(d)});
+}
+
+function updDots(res){
+  qs.forEach(function(_,i){
+    var d=document.getElementById('wd'+i);if(!d)return;
+    if(i<res.length){d.className='dot '+(res[i]?'dot-ok':'dot-no')}
+    else if(i===cur){d.className='dot dot-on'}
+    else{d.className='dot dot-idle'}
+  });
+}
+
+var results=[];
+function loadQ(){
+  done=false;
+  var q=qs[cur];
+  document.getElementById('ww-cnt').textContent=(cur+1)+' / '+qs.length;
+  document.getElementById('ww-pts').textContent=score+' pts';
+  var sw=document.getElementById('ww-stk');
+  sw.innerHTML=stk>=2?'<span class="stk-b"><i class="ti ti-flame" aria-hidden="true"></i> x'+stk+'</span>':'';
+  var bd=document.getElementById('ww-badge');
+  bd.innerHTML=q.tp==='pat'
+    ?'<span class="qbadge qb-pat"><i class="ti ti-flag" style="font-size:13px" aria-hidden="true"></i> Símbolos patrios</span>'
+    :'<span class="qbadge qb-reg"><i class="ti ti-map-2" style="font-size:13px" aria-hidden="true"></i> Regiones de Colombia</span>';
+  document.getElementById('ww-qimg').innerHTML='<div class="qimg">'+q.img+'</div>';
+  document.getElementById('ww-qtext').textContent=q.t;
+  var ag=document.getElementById('ww-answers');ag.innerHTML='';
+  q.a.forEach(function(ans,i){
+    var b=document.createElement('button');
+    b.className='acard acard-'+LBLS[i]+' pop';b.style.animationDelay=(i*.065)+'s';
+    b.innerHTML='<span class="albl">'+LBLS[i]+'</span>'+ans;
+    b.onclick=function(){pick(i)};ag.appendChild(b);
+  });
+  document.getElementById('ww-fb').innerHTML='';
+  var qc=document.getElementById('ww-qcard');qc.classList.remove('pop');void qc.offsetWidth;qc.classList.add('pop');
+  updDots(results);startTmr();
+}
+
+function startTmr(){clearInterval(tmr);tl=20;updTmr();tmr=setInterval(function(){tl--;updTmr();if(tl<=0){clearInterval(tmr);if(!done)timeout()}},1000)}
+function updTmr(){
+  var p=(tl/20)*100;var b=document.getElementById('ww-tbar');
+  b.style.width=p+'%';
+  b.style.background=tl>12?'#C83E2B':tl>6?'#BA7517':'#A32D2D';
+  document.getElementById('ww-tsec').textContent=tl+'s';
+}
+
+function timeout(){done=true;no++;stk=0;results.push(false);reveal(-1);showFb(false,'¡Se acabó el tiempo! Era '+LBLS[qs[cur].c]+': '+qs[cur].a[qs[cur].c]+'. '+qs[cur].fb);nextQ()}
+
+function pick(i){
+  if(done)return;done=true;clearInterval(tmr);
+  var q=qs[cur];var right=i===q.c;
+  if(right){var pts=Math.max(10,Math.round((tl/20)*60))+(stk>=2?25:0);score+=pts;ok++;stk++;best=Math.max(best,stk);results.push(true);document.getElementById('ww-pts').textContent=score+' pts';showFb(true,'¡Excelente! +'+pts+' pts — '+q.fb)}
+  else{no++;stk=0;results.push(false);showFb(false,'¡Casi! Era '+LBLS[q.c]+': '+q.a[q.c]+'. '+q.fb)}
+  reveal(i);nextQ();
+}
+
+function reveal(sel){
+  var q=qs[cur];
+  document.querySelectorAll('.acard').forEach(function(c,i){
+    c.style.cursor='default';c.onclick=null;
+    c.className='acard '+(i===q.c?'is-rev':i===sel&&i!==q.c?'is-no':'is-dim');
+  });
+}
+
+function showFb(good,msg){
+  var a=document.getElementById('ww-fb');
+  a.innerHTML='<div class="fb '+(good?'fb-ok':'fb-no')+'"><i class="ti '+(good?'ti-circle-check':'ti-circle-x')+' fb-ico" aria-hidden="true"></i><span>'+msg+'</span></div>';
+}
+
+function nextQ(){
+  setTimeout(function(){
+    updDots(results);cur++;
+    if(cur<qs.length)loadQ();else showEnd();
+  },3400);
+}
+
+function showEnd(){
+  document.getElementById('ww-fsc').textContent=score;
+  document.getElementById('ww-tok').textContent=ok;
+  document.getElementById('ww-tno').textContent=no;
+  document.getElementById('ww-tstk').textContent=best;
+  var p=ok/qs.length;
+  var rank=p===1?'¡Guardián de Colombia!':p>=.8?'Explorador Colombiano':p>=.6?'Aprendiz Valioso':p>=.4?'Viajero en Camino':'Sigue Explorando';
+  var msg=p===1?'¡Perfecto! Conoces muy bien los símbolos y las regiones de Colombia. ¡Eres un orgullo!':p>=.8?'¡Muy buen trabajo! Amas a Colombia y se nota. ¡Sigue aprendiendo!':p>=.6?'¡Vas muy bien! Con un poco más de práctica lo dominarás todo.':p>=.4?'¡Buen intento! Te invitamos a repasar los temas y volver a jugar.':'No te rindas. ¡Vuelve a intentarlo y verás cómo mejoras!';
+  document.getElementById('ww-rank').textContent=rank;
+  document.getElementById('ww-rmsg').textContent=msg;
+  wSc('ww-end');
+}
+
+function goHome(){results=[];wSc('ww-cover')}
+
+/* ── MATCH GAME ── */
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+function startMatch(){
+  mSel1=-1;mSel2=-1;mPts=0;mFound=0;
+  mOrder1=shuffle(MATCH_PAIRS.map(function(_,i){return i}));
+  mOrder2=shuffle(MATCH_PAIRS.map(function(_,i){return i}));
+  var c1=document.getElementById('ww-mcol1');c1.innerHTML='';
+  var c2=document.getElementById('ww-mcol2');c2.innerHTML='';
+  mOrder1.forEach(function(idx,pos){
+    var t=document.createElement('button');
+    t.className='mtile';t.dataset.idx=idx;t.dataset.col='1';t.dataset.pos=pos;
+    t.innerHTML='<i class="ti ti-flag" style="font-size:14px;flex-shrink:0;color:#C83E2B" aria-hidden="true"></i>'+MATCH_PAIRS[idx].l;
+    t.onclick=function(){mTap(this,1)};c1.appendChild(t);
+  });
+  mOrder2.forEach(function(idx,pos){
+    var t=document.createElement('button');
+    t.className='mtile';t.dataset.idx=idx;t.dataset.col='2';t.dataset.pos=pos;
+    t.innerHTML='<i class="ti ti-book" style="font-size:14px;flex-shrink:0;color:#1D9E75" aria-hidden="true"></i>'+MATCH_PAIRS[idx].r;
+    t.onclick=function(){mTap(this,2)};c2.appendChild(t);
+  });
+  document.getElementById('ww-mpts').innerHTML='<i class="ti ti-star" style="font-size:13px;color:#BA7517" aria-hidden="true"></i> 0 pts';
+  document.getElementById('ww-mprog').textContent='0 de '+MATCH_PAIRS.length+' parejas encontradas';
+  document.getElementById('ww-mfb').innerHTML='';
+  wSc('ww-match');
+}
+
+function mTap(el,col){
+  if(el.classList.contains('matched')||el.classList.contains('used'))return;
+  if(col===1){
+    if(mSel1>=0){document.querySelectorAll('#ww-mcol1 .mtile').forEach(function(t){if(!t.classList.contains('matched'))t.classList.remove('sel')})}
+    mSel1=parseInt(el.dataset.idx);el.classList.add('sel');
+  } else {
+    if(mSel2>=0){document.querySelectorAll('#ww-mcol2 .mtile').forEach(function(t){if(!t.classList.contains('matched'))t.classList.remove('sel')})}
+    mSel2=parseInt(el.dataset.idx);el.classList.add('sel');
+  }
+  if(mSel1>=0&&mSel2>=0){
+    var t1=document.querySelector('#ww-mcol1 .mtile[data-idx="'+mSel1+'"]');
+    var t2=document.querySelector('#ww-mcol2 .mtile[data-idx="'+mSel2+'"]');
+    if(mSel1===mSel2){
+      t1.classList.remove('sel');t2.classList.remove('sel');
+      t1.classList.add('matched');t2.classList.add('matched');
+      mPts+=100;mFound++;
+      document.getElementById('ww-mpts').innerHTML='<i class="ti ti-star" style="font-size:13px;color:#BA7517" aria-hidden="true"></i> '+mPts+' pts';
+      document.getElementById('ww-mprog').textContent=mFound+' de '+MATCH_PAIRS.length+' parejas encontradas';
+      var fb=document.getElementById('ww-mfb');
+      fb.innerHTML='<div class="fb fb-ok"><i class="ti ti-circle-check fb-ico" aria-hidden="true"></i>¡Pareja correcta! '+MATCH_PAIRS[mSel1].l+' → '+MATCH_PAIRS[mSel1].r+'</div>';
+      if(mFound===MATCH_PAIRS.length){setTimeout(function(){
+        score=mPts;ok=mFound;no=0;best=0;
+        document.getElementById('ww-fsc').textContent=mPts;
+        document.getElementById('ww-tok').textContent=mFound;
+        document.getElementById('ww-tno').textContent='0';
+        document.getElementById('ww-tstk').textContent='—';
+        document.getElementById('ww-rank').textContent='¡Campeón del Emparejamiento!';
+        document.getElementById('ww-rmsg').textContent='¡Increíble! Encontraste todas las parejas. ¡Eres un experto en Colombia!';
+        wSc('ww-end');
+      },1800)}
+    } else {
+      t1.classList.add('wrong');t2.classList.add('wrong');
+      var fb=document.getElementById('ww-mfb');
+      fb.innerHTML='<div class="fb fb-no"><i class="ti ti-circle-x fb-ico" aria-hidden="true"></i>¡Esos no hacen pareja! Intenta de nuevo con otro elemento.</div>';
+      setTimeout(function(){t1.classList.remove('wrong','sel');t2.classList.remove('wrong','sel')},500);
+    }
+    mSel1=-1;mSel2=-1;
+  }
+}
+</script>

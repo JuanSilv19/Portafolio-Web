@@ -1,0 +1,189 @@
+
+<h2 class="sr-only">Quiz interactivo estilo Kahoot sobre los animales y sus habitats para primaria</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.gw{font-family:var(--font-sans);padding:1rem 0;min-height:500px}
+.sc{display:none}.sc.on{display:block}
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:.625rem 1rem;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:.875rem}
+.q-num{font-size:13px;color:var(--color-text-secondary)}
+.pts{font-size:14px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:6px}
+.streak{font-size:12px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);background:#FAC775;color:#412402}
+.tbar-bg{height:10px;background:var(--color-background-secondary);border-radius:5px;border:0.5px solid var(--color-border-tertiary);overflow:hidden;margin-bottom:.875rem}
+.tbar{height:100%;border-radius:5px;transition:width 1s linear,background .4s}
+.trow{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;color:var(--color-text-secondary)}
+.qcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.375rem 1.25rem;margin-bottom:.875rem;text-align:center;min-height:110px;display:flex;align-items:center;justify-content:center}
+.qtext{font-size:19px;font-weight:500;color:var(--color-text-primary);line-height:1.45}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.abtn{padding:.9rem 1rem;border-radius:var(--border-radius-md);border:none;cursor:pointer;font-size:14px;font-weight:500;display:flex;align-items:center;gap:9px;transition:transform .15s;min-height:62px;text-align:left;line-height:1.3}
+.abtn:hover{transform:scale(1.025)}.abtn:active{transform:scale(.97)}
+.lbl{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;background:rgba(0,0,0,.14);color:inherit}
+.a0{background:#B5D4F4;color:#042C53}.a1{background:#F5C4B3;color:#4A1B0C}
+.a2{background:#C0DD97;color:#173404}.a3{background:#FAC775;color:#412402}
+.ok{background:#97C459;color:#173404}.nope{background:#F09595;color:#501313;opacity:.65}
+.dim{opacity:.45}.ok-dim{background:#97C459;color:#173404}
+.fb{text-align:center;padding:.875rem 1rem;border-radius:var(--border-radius-md);margin-top:.75rem;font-size:14px;line-height:1.5}
+.fb-ok{background:#EAF3DE;color:#27500A;border:0.5px solid #9FE1CB}.fb-no{background:#FAECE7;color:#4A1B0C;border:0.5px solid #F0997B}
+.start-wrap,.end-wrap{text-align:center;padding:2rem 1.5rem}
+.bignum{font-size:52px;font-weight:500;color:var(--color-text-primary)}
+.bigtitle{font-size:26px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem}
+.sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:2rem;line-height:1.6}
+.tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.tag{font-size:12px;font-weight:500;padding:5px 13px;border-radius:var(--border-radius-md)}
+.gbtn{background:#639922;color:#EAF3DE;border:none;padding:13px 2rem;border-radius:var(--border-radius-md);font-size:15px;font-weight:500;cursor:pointer;transition:transform .15s}
+.gbtn:hover{transform:scale(1.03)}
+.rbtn{background:#378ADD;color:#E6F1FB;border:none;padding:10px 1.5rem;border-radius:var(--border-radius-md);font-size:14px;font-weight:500;cursor:pointer;transition:transform .15s}
+.rbtn:hover{transform:scale(1.02)}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.5rem 0}
+.scard{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem;border:0.5px solid var(--color-border-tertiary)}
+.sval{font-size:24px;font-weight:500;color:var(--color-text-primary)}
+.slbl{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.resmsg{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:1.75rem;line-height:1.5}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ico{font-size:20px;color:var(--color-text-secondary)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+.pop{animation:pop .32s ease forwards}
+</style>
+
+<div class="gw">
+
+<div class="sc on" id="sc-start">
+  <div class="start-wrap">
+    <i class="ti ti-leaf" style="font-size:44px;color:#639922;display:block;margin-bottom:1rem" aria-hidden="true"></i>
+    <p class="bigtitle">Animales y sus Habitats</p>
+    <p class="sub">Descubre donde vive cada animal!<br>10 preguntas — 15 segundos cada una<br>Responde rapido para ganar mas puntos</p>
+    <div class="tags">
+      <span class="tag" style="background:#B5D4F4;color:#042C53">10 preguntas</span>
+      <span class="tag" style="background:#C0DD97;color:#173404">Hasta 1000 pts</span>
+      <span class="tag" style="background:#FAC775;color:#412402">15s por ronda</span>
+      <span class="tag" style="background:#F5C4B3;color:#4A1B0C">Bonus por racha</span>
+    </div>
+    <button class="gbtn" onclick="startGame()">
+      <i class="ti ti-player-play" aria-hidden="true"></i> Empezar juego
+    </button>
+  </div>
+</div>
+
+<div class="sc" id="sc-quiz">
+  <div class="hdr">
+    <span class="q-num" id="qnum">Pregunta 1 de 10</span>
+    <span class="pts"><i class="ti ti-star" style="font-size:15px;color:#BA7517" aria-hidden="true"></i><span id="pts">0 pts</span></span>
+    <span id="stkwrap"></span>
+  </div>
+  <div class="trow"><span>Tiempo restante</span><span id="tsec">15s</span></div>
+  <div class="tbar-bg"><div class="tbar" id="tbar" style="width:100%;background:#639922"></div></div>
+  <div class="qcard" id="qcard"><div><div id="qico" style="margin-bottom:.625rem"></div><p class="qtext" id="qtext"></p></div></div>
+  <div class="agrid" id="agrid"></div>
+  <div id="fbarea"></div>
+</div>
+
+<div class="sc" id="sc-end">
+  <div class="end-wrap">
+    <i class="ti ti-trophy" style="font-size:48px;color:#BA7517;display:block;margin-bottom:1rem" aria-hidden="true"></i>
+    <p class="bigtitle">Resultado final</p>
+    <p class="bignum" id="fscore">0</p>
+    <p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:.75rem">puntos</p>
+    <p class="resmsg" id="rmsg"></p>
+    <div class="statrow">
+      <div class="scard"><div class="sval" id="st-ok">0</div><div class="slbl">Correctas</div></div>
+      <div class="scard"><div class="sval" id="st-no">0</div><div class="slbl">Incorrectas</div></div>
+      <div class="scard"><div class="sval" id="st-stk">0</div><div class="slbl">Mejor racha</div></div>
+    </div>
+    <div class="btns">
+      <button class="gbtn" onclick="restartGame()"><i class="ti ti-refresh" aria-hidden="true"></i> Jugar de nuevo</button>
+      <button class="rbtn" onclick="sendPrompt('Quiero aprender mas sobre los habitats de los animales. Explicame con ejemplos divertidos.')">Ver mas <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const Qs=[
+  {t:"Donde vive normalmente un pez?",ic:"ti-fish",a:["En el desierto","En el agua (rio o mar)","En un arbol","En la montana"],c:1,f:"Los peces respiran con branquias y necesitan el agua para sobrevivir!"},
+  {t:"Cual de estos animales vive en el desierto?",ic:"ti-sun",a:["Pinguino","Ballena","Camello","Oso polar"],c:2,f:"El camello aguanta varios dias sin beber agua, perfecto para el desierto!"},
+  {t:"Donde vive el oso polar?",ic:"ti-snowflake",a:["En la selva caliente","En zonas frias con nieve","En el desierto","En el fondo del mar"],c:1,f:"El oso polar tiene pelo muy grueso para protegerse del frio del Artico!"},
+  {t:"Que animal construye su nido en los arboles?",ic:"ti-tree",a:["La vaca","El cocodrilo","El pajaro","El topo"],c:2,f:"Los pajaros construyen nidos en arboles para poner sus huevos con seguridad!"},
+  {t:"Donde vive el cocodrilo?",ic:"ti-ripple",a:["En los polos","En la montana nevada","En pantanos y rios calidos","En el desierto seco"],c:2,f:"El cocodrilo ama el agua caliente y el sol. Le gusta asolearse en las orillas!"},
+  {t:"Cual de estos animales vive en una granja?",ic:"ti-home",a:["Tiburon","Leon","Gallina","Pinguino"],c:2,f:"La gallina vive en la granja y nos da huevos fresquitos todos los dias!"},
+  {t:"Que animal vive bajo la tierra haciendo tuneles?",ic:"ti-arrow-bar-down",a:["El loro","El delfin","El topo","La jirafa"],c:2,f:"El topo pasa casi toda su vida bajo tierra buscando lombrices para comer!"},
+  {t:"En que habitat vive la jirafa?",ic:"ti-globe",a:["En el fondo del mar","En la sabana africana","En el polo norte","En la selva amazonica"],c:1,f:"La jirafa vive en la sabana africana. Su cuello largo le ayuda a alcanzar las hojas altas!"},
+  {t:"Donde viven los pinguinos?",ic:"ti-snowflake",a:["En el desierto del Sahara","En la selva tropical","En zonas frias y heladas","En los arrecifes de coral"],c:2,f:"Los pinguinos viven en la Antartida! No vuelan pero nadan increiblemente bien!"},
+  {t:"Donde vive el delfin?",ic:"ti-waves",a:["En el bosque","En el desierto","En el mar y los oceanos","En las montanas"],c:2,f:"El delfin vive en el mar y es uno de los animales mas inteligentes del planeta!"}
+];
+
+const COLS=["a0","a1","a2","a3"],LBLS=["A","B","C","D"];
+let cur=0,score=0,ok=0,nope=0,stk=0,bestStk=0,tmr=null,tl=15,answered=false;
+
+function show(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on')}
+function startGame(){cur=0;score=0;ok=0;nope=0;stk=0;bestStk=0;show('sc-quiz');loadQ()}
+
+function loadQ(){
+  answered=false;
+  const q=Qs[cur];
+  document.getElementById('qnum').textContent='Pregunta '+(cur+1)+' de '+Qs.length;
+  document.getElementById('pts').textContent=score+' pts';
+  document.getElementById('qtext').textContent=q.t;
+  document.getElementById('qico').innerHTML='<i class="ti '+q.ic+' ico" aria-hidden="true"></i>';
+  const sw=document.getElementById('stkwrap');
+  sw.innerHTML=stk>=2?'<span class="streak"><i class="ti ti-flame" aria-hidden="true"></i> Racha x'+stk+'</span>':'';
+  const g=document.getElementById('agrid');g.innerHTML='';
+  q.a.forEach((ans,i)=>{
+    const b=document.createElement('button');
+    b.className='abtn '+COLS[i]+' pop';b.style.animationDelay=(i*.08)+'s';
+    b.innerHTML='<span class="lbl">'+LBLS[i]+'</span>'+ans;
+    b.onclick=()=>pick(i);g.appendChild(b);
+  });
+  document.getElementById('fbarea').innerHTML='';
+  const qc=document.getElementById('qcard');qc.classList.remove('pop');void qc.offsetWidth;qc.classList.add('pop');
+  startTmr();
+}
+
+function startTmr(){clearInterval(tmr);tl=15;updTmr();tmr=setInterval(()=>{tl--;updTmr();if(tl<=0){clearInterval(tmr);if(!answered)timeout()}},1000)}
+
+function updTmr(){
+  const p=(tl/15)*100;
+  const b=document.getElementById('tbar');
+  b.style.width=p+'%';
+  b.style.background=tl>8?'#639922':tl>4?'#BA7517':'#A32D2D';
+  document.getElementById('tsec').textContent=tl+'s';
+}
+
+function timeout(){answered=true;nope++;stk=0;reveal(-1);showFb(false,"Se acabo el tiempo! La respuesta era "+LBLS[Qs[cur].c]+": "+Qs[cur].a[Qs[cur].c]+". "+Qs[cur].f);next()}
+
+function pick(i){
+  if(answered)return;answered=true;clearInterval(tmr);
+  const q=Qs[cur],right=i===q.c;
+  if(right){const pts=Math.max(20,Math.round((tl/15)*80))+(stk>=2?20:0);score+=pts;ok++;stk++;bestStk=Math.max(bestStk,stk);document.getElementById('pts').textContent=score+' pts';showFb(true,"Correcto! +"+pts+" pts — "+q.f)}
+  else{nope++;stk=0;showFb(false,"Casi! Era "+LBLS[q.c]+": "+q.a[q.c]+". "+q.f)}
+  reveal(i);next();
+}
+
+function reveal(sel){
+  const q=Qs[cur];
+  document.querySelectorAll('.abtn').forEach((b,i)=>{
+    b.style.cursor='default';b.onclick=null;
+    b.className='abtn '+(i===q.c?'ok-dim':i===sel&&i!==q.c?'nope':'dim');
+  });
+}
+
+function showFb(good,msg){
+  const a=document.getElementById('fbarea');
+  const ic=good?'ti-circle-check':'ti-circle-x';
+  a.innerHTML='<div class="fb '+(good?'fb-ok':'fb-no')+'"><i class="ti '+ic+'" style="font-size:16px;vertical-align:-2px;margin-right:5px" aria-hidden="true"></i>'+msg+'</div>';
+}
+
+function next(){setTimeout(()=>{cur++;cur<Qs.length?loadQ():showEnd()},3200)}
+
+function showEnd(){
+  document.getElementById('fscore').textContent=score;
+  document.getElementById('st-ok').textContent=ok;
+  document.getElementById('st-no').textContent=nope;
+  document.getElementById('st-stk').textContent=bestStk;
+  const p=ok/Qs.length;
+  let msg=p===1?"Perfecto! Eres un experto en habitats animales!":p>=.8?"Excelente trabajo! Conoces muy bien donde viven los animales!":p>=.6?"Muy bien! Sigue explorando el mundo animal!":p>=.4?"Buen intento! Repasa los habitats y vuelve a intentarlo!":"Sigue practicando! Los animales te esperan para que los conozcas mejor!";
+  document.getElementById('rmsg').textContent=msg;
+  show('sc-end');
+}
+
+function restartGame(){show('sc-start')}
+</script>

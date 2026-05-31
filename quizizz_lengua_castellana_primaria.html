@@ -1,0 +1,353 @@
+
+<h2 class="sr-only">Actividad interactiva de comprensión lectora y sinónimos estilo Quizizz para primaria</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+#qzapp{font-family:var(--font-sans);padding:1rem 0}
+.sc{display:none}.sc.on{display:block}
+.pbtn{border:none;cursor:pointer;font-weight:500;border-radius:var(--border-radius-md);transition:transform .15s;display:inline-flex;align-items:center;gap:7px}
+.pbtn:hover{transform:scale(1.03)}.pbtn:active{transform:scale(.97)}
+.btn-purple{background:#7F77DD;color:#EEEDFE;padding:13px 1.875rem;font-size:15px}
+.btn-teal{background:#1D9E75;color:#E1F5EE;padding:11px 1.5rem;font-size:14px}
+.btn-sm{background:var(--color-background-secondary);color:var(--color-text-primary);border:0.5px solid var(--color-border-secondary);padding:9px 1.25rem;font-size:13px}
+
+.cover{text-align:center;padding:2rem 1.5rem}
+.cov-title{font-size:26px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem}
+.cov-sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.65}
+.badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.bdg{font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--border-radius-md)}
+
+.read-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.rtag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:5px 11px;border-radius:var(--border-radius-md);background:#EEEDFE;color:#26215C}
+.hints{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.875rem}
+.hint{font-size:11px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);display:inline-flex;align-items:center;gap:4px}
+.story-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.375rem}
+.story-title{font-size:17px;font-weight:500;color:var(--color-text-primary);margin-bottom:1rem;text-align:center}
+.story-body{font-size:14px;color:var(--color-text-primary);line-height:1.9}
+.story-body p{margin-bottom:.875rem}.story-body p:last-child{margin-bottom:0}
+.wd{color:#534AB7;font-weight:500}
+.read-footer{margin-top:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.tip{font-size:12px;color:var(--color-text-secondary);display:flex;align-items:center;gap:5px}
+
+.qhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.qcnt{font-size:13px;color:var(--color-text-secondary)}
+.xpd{font-size:14px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:5px}
+.stk-b{font-size:12px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md);background:#FAC775;color:#412402;display:inline-flex;align-items:center;gap:4px}
+
+.pdots{display:flex;gap:4px;margin-bottom:.875rem;flex-wrap:wrap}
+.dot{height:7px;border-radius:4px;transition:all .3s}
+.dot-idle{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+.dot-active{background:#7F77DD}
+.dot-ok{background:#1D9E75}.dot-no{background:#D85A30}
+
+.trow{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
+.tbar-bg{height:8px;background:var(--color-background-secondary);border-radius:4px;border:0.5px solid var(--color-border-tertiary);overflow:hidden;margin-bottom:.875rem}
+.tbar{height:100%;border-radius:4px;transition:width 1s linear,background .4s}
+
+.qbadge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:var(--border-radius-md);font-size:12px;font-weight:500;margin-bottom:.75rem}
+.qb-comp{background:#E6F1FB;color:#042C53}.qb-sin{background:#EEEDFE;color:#26215C}
+.qcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:.875rem;min-height:88px;display:flex;align-items:center;justify-content:center;text-align:center}
+.qtext{font-size:18px;font-weight:500;color:var(--color-text-primary);line-height:1.45}
+
+.answers{display:flex;flex-direction:column;gap:8px}
+.acard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-left:3px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:.875rem 1rem;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .12s,border-color .12s,transform .1s;font-size:14px;color:var(--color-text-primary);width:100%;text-align:left;line-height:1.4}
+.acard:hover{background:var(--color-background-secondary)}
+.acard:active{transform:scale(.98)}
+.albl{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);background:var(--color-background-secondary)}
+.acard-A{border-left-color:#534AB7}.acard-B{border-left-color:#0F6E56}
+.acard-C{border-left-color:#BA7517}.acard-D{border-left-color:#993C1D}
+.acard.is-ok{background:#EAF3DE;border-color:#1D9E75;border-left-width:4px}
+.acard.is-ok .albl{background:#1D9E75;color:#E1F5EE;border-color:#1D9E75}
+.acard.is-no{background:#FAECE7;border-color:#D85A30;border-left-width:4px;opacity:.7}
+.acard.is-no .albl{background:#D85A30;color:#FAECE7;border-color:#D85A30}
+.acard.is-rev{background:#EAF3DE;border-color:#1D9E75;border-left-width:4px}
+.acard.is-rev .albl{background:#1D9E75;color:#E1F5EE;border-color:#1D9E75}
+.acard.is-dim{opacity:.38}
+
+.fb{display:flex;align-items:flex-start;gap:.625rem;padding:.875rem 1rem;border-radius:var(--border-radius-md);margin-top:.75rem;font-size:13px;line-height:1.6}
+.fb-ok{background:#EAF3DE;color:#085041;border:0.5px solid #9FE1CB}
+.fb-no{background:#FAECE7;color:#4A1B0C;border:0.5px solid #F0997B}
+.fb-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+
+.xpbar-wrap{margin-top:.75rem}
+.xpbar-bg{height:6px;background:var(--color-background-secondary);border-radius:3px;border:0.5px solid var(--color-border-tertiary);overflow:hidden}
+.xpbar{height:100%;border-radius:3px;background:#7F77DD;transition:width .6s ease}
+.xpbar-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-secondary);margin-bottom:4px}
+
+.result-wrap{text-align:center;padding:2rem 1.5rem}
+.rnk{display:inline-block;padding:5px 16px;border-radius:var(--border-radius-md);font-size:13px;font-weight:500;margin-bottom:.875rem;background:#EEEDFE;color:#26215C}
+.bigxp{font-size:50px;font-weight:500;color:var(--color-text-primary)}
+.rmsg{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem;line-height:1.65}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem}
+.scard{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem;border:0.5px solid var(--color-border-tertiary)}
+.sval{font-size:22px;font-weight:500;color:var(--color-text-primary)}
+.slbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.tstats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.75rem}
+.tsc{border-radius:var(--border-radius-md);padding:.875rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.tsc-comp{background:#E6F1FB}.tsc-sin{background:#EEEDFE}
+.tsc-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.375rem;display:flex;align-items:center;gap:4px}
+.tsc-val{font-size:22px;font-weight:500;color:var(--color-text-primary)}
+.btns-end{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+@keyframes pop{0%{transform:scale(.9);opacity:0}65%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+.pop{animation:pop .28s ease forwards}
+</style>
+
+<div id="qzapp">
+
+<div class="sc on" id="qz-cover">
+  <div class="cover">
+    <i class="ti ti-book-2" style="font-size:50px;color:#7F77DD;display:block;margin-bottom:1rem" aria-hidden="true"></i>
+    <p class="cov-title">Comprensión Lectora y Sinónimos</p>
+    <p class="cov-sub">Lee el cuento con mucha atención y luego responde las preguntas.<br>Hay dos tipos: <strong style="color:#042C53">comprensión</strong> y <strong style="color:#26215C">sinónimos</strong>.<br>Tienes 20 segundos por pregunta. ¡Buena suerte!</p>
+    <div class="badge-row">
+      <span class="bdg" style="background:#EEEDFE;color:#26215C">10 preguntas</span>
+      <span class="bdg" style="background:#E1F5EE;color:#04342C">Cuento + Sinónimos</span>
+      <span class="bdg" style="background:#FAC775;color:#412402">Hasta 1500 XP</span>
+      <span class="bdg" style="background:#E6F1FB;color:#042C53">Gana un rango</span>
+    </div>
+    <button class="pbtn btn-purple" onclick="qzGoRead()">
+      <i class="ti ti-book-open" aria-hidden="true"></i> Leer el cuento
+    </button>
+  </div>
+</div>
+
+<div class="sc" id="qz-read">
+  <div class="read-hdr">
+    <div class="rtag"><i class="ti ti-book" style="font-size:13px" aria-hidden="true"></i> Lectura del cuento</div>
+    <span style="font-size:12px;color:var(--color-text-secondary)">Lee con calma</span>
+  </div>
+  <div class="hints">
+    <span class="hint"><i class="ti ti-user" style="font-size:12px" aria-hidden="true"></i> Personajes</span>
+    <span class="hint"><i class="ti ti-map-pin" style="font-size:12px" aria-hidden="true"></i> Lugares</span>
+    <span class="hint"><i class="ti ti-heart" style="font-size:12px" aria-hidden="true"></i> Sentimientos</span>
+    <span class="hint" style="background:#EEEDFE;color:#26215C;border-color:#AFA9EC"><i class="ti ti-alphabet-latin" style="font-size:12px" aria-hidden="true"></i> Palabras moradas = sinónimos</span>
+  </div>
+  <div class="story-card">
+    <p class="story-title">El Día Especial de Sofía</p>
+    <div class="story-body">
+      <p>Sofía era una niña muy <span class="wd">alegre</span> que vivía cerca de su escuela. Todos los días caminaba contenta por el parque antes de llegar al salón de clases.</p>
+      <p>Un martes, Sofía llegó al recreo y vio que su amiga Laura estaba llorando en un rincón. Laura había olvidado su merienda en casa y tenía mucha hambre.</p>
+      <p>Sofía pensó un momento y <span class="wd">decidió</span> compartir su delicioso sándwich y su jugo de naranja. Laura sonrió y le dio un <span class="wd">enorme</span> abrazo a Sofía.</p>
+      <p>Al terminar el recreo, la profesora llamó a Sofía al frente y dijo: "Hoy hiciste algo <span class="wd">extraordinario</span>. Compartir es una de las cosas más <span class="wd">hermosas</span> que podemos hacer". Sofía se puso colorada de la emoción y regresó feliz a su pupitre.</p>
+      <p>Esa tarde, camino a casa, Sofía pensó que ayudar a los demás la hacía sentir mejor que cualquier otra cosa en el mundo.</p>
+    </div>
+  </div>
+  <div class="read-footer">
+    <p class="tip"><i class="ti ti-bulb" style="font-size:14px;color:#BA7517" aria-hidden="true"></i> Las palabras en morado aparecerán en las preguntas de sinónimos.</p>
+    <button class="pbtn btn-purple" onclick="qzStart()" style="font-size:14px;padding:11px 1.5rem">
+      ¡Ya leí, a jugar! <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+<div class="sc" id="qz-quiz">
+  <div class="qhdr">
+    <span class="qcnt" id="qz-cnt">1 / 10</span>
+    <div class="xpd"><i class="ti ti-bolt" style="font-size:15px;color:#7F77DD" aria-hidden="true"></i><span id="qz-xp">0 XP</span></div>
+    <span id="qz-stk"></span>
+  </div>
+  <div class="pdots" id="qz-dots"></div>
+  <div class="trow"><span>Tiempo</span><span id="qz-tsec">20s</span></div>
+  <div class="tbar-bg"><div class="tbar" id="qz-tbar" style="width:100%;background:#7F77DD"></div></div>
+  <div id="qz-badge"></div>
+  <div class="qcard" id="qz-qcard"><p class="qtext" id="qz-qtext"></p></div>
+  <div class="answers" id="qz-answers"></div>
+  <div id="qz-fb"></div>
+  <div class="xpbar-wrap" id="qz-xpwrap" style="display:none">
+    <div class="xpbar-lbl"><span>Barra de XP</span><span id="qz-xppct">0%</span></div>
+    <div class="xpbar-bg"><div class="xpbar" id="qz-xpbar" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="sc" id="qz-end">
+  <div class="result-wrap">
+    <i class="ti ti-trophy" style="font-size:48px;color:#BA7517;display:block;margin-bottom:.875rem" aria-hidden="true"></i>
+    <span class="rnk" id="qz-rank">Lector Experto</span>
+    <p class="bigxp" id="qz-fxp">0</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:.625rem">XP ganados</p>
+    <p class="rmsg" id="qz-rmsg"></p>
+    <div class="statrow">
+      <div class="scard"><div class="sval" id="qz-tok">0</div><div class="slbl">Correctas</div></div>
+      <div class="scard"><div class="sval" id="qz-tno">0</div><div class="slbl">Incorrectas</div></div>
+      <div class="scard"><div class="sval" id="qz-tstk">0</div><div class="slbl">Mejor racha</div></div>
+    </div>
+    <div class="tstats">
+      <div class="tsc tsc-comp">
+        <div class="tsc-title"><i class="ti ti-book" style="font-size:12px" aria-hidden="true"></i> Comprensión</div>
+        <div class="tsc-val" id="qz-comp">0 / 5</div>
+      </div>
+      <div class="tsc tsc-sin">
+        <div class="tsc-title"><i class="ti ti-alphabet-latin" style="font-size:12px" aria-hidden="true"></i> Sinónimos</div>
+        <div class="tsc-val" id="qz-sin">0 / 5</div>
+      </div>
+    </div>
+    <div class="btns-end">
+      <button class="pbtn btn-purple" onclick="qzRestart()"><i class="ti ti-refresh" aria-hidden="true"></i> Jugar de nuevo</button>
+      <button class="pbtn btn-teal" onclick="sendPrompt('Quiero practicar más sinónimos y comprensión lectora para primaria. Dame ejercicios divertidos.')">Seguir aprendiendo <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const QZQ=[
+  {tp:"comp",t:"¿Cómo se llamaba la niña protagonista del cuento?",a:["Laura","Sofía","Valentina","María"],c:1,fb:"El cuento empieza diciendo: 'Sofía era una niña muy alegre que vivía cerca de su escuela.'"},
+  {tp:"comp",t:"¿Dónde encontró Sofía a su amiga Laura llorando?",a:["En el salón de clase","En la biblioteca","En un rincón del recreo","En el parque"],c:2,fb:"El texto dice que Laura estaba 'llorando en un rincón' durante el recreo."},
+  {tp:"comp",t:"¿Por qué estaba llorando Laura en el recreo?",a:["Se cayó y se lastimó","Había olvidado su merienda en casa","Perdió su cuaderno favorito","Peleó con Sofía"],c:1,fb:"Laura lloraba porque 'había olvidado su merienda en casa y tenía mucha hambre'."},
+  {tp:"comp",t:"¿Qué le compartió Sofía a Laura para que no tuviera hambre?",a:["Sus colores y un cuaderno","Un chocolate y galletas","Su sándwich y jugo de naranja","Dinero para comprar algo"],c:2,fb:"Sofía compartió 'su delicioso sándwich y su jugo de naranja' con Laura."},
+  {tp:"comp",t:"¿Qué hizo la profesora al enterarse de lo que hizo Sofía?",a:["La puso a copiar más texto","La llamó al frente y la felicitó","Le dejó más tarea","La mandó donde el rector"],c:1,fb:"La profesora llamó a Sofía al frente y dijo que había hecho algo extraordinario."},
+  {tp:"sin",t:"En el cuento, Sofía era una niña muy ALEGRE. ¿Cuál es el sinónimo de ALEGRE?",hl:"ALEGRE",a:["Triste","Enojada","Feliz","Asustada"],c:2,fb:"ALEGRE y FELIZ son sinónimos: los dos describen a alguien que se siente bien y contento."},
+  {tp:"sin",t:"Sofía DECIDIÓ compartir su merienda. ¿Cuál es el sinónimo de DECIDIÓ?",hl:"DECIDIÓ",a:["Olvidó","Eligió","Corrió","Preguntó"],c:1,fb:"DECIDIÓ y ELIGIÓ son sinónimos: significan tomar una decisión o escoger algo con la mente."},
+  {tp:"sin",t:"Laura le dio un ENORME abrazo a Sofía. ¿Cuál es el sinónimo de ENORME?",hl:"ENORME",a:["Pequeño","Mediano","Chiquito","Grande"],c:3,fb:"ENORME y GRANDE son sinónimos: ambas palabras describen algo de mucho tamaño."},
+  {tp:"sin",t:"La profesora dijo que Sofía hizo algo EXTRAORDINARIO. ¿Cuál es el sinónimo?",hl:"EXTRAORDINARIO",a:["Aburrido","Normal y corriente","Especial y sorprendente","Muy difícil"],c:2,fb:"EXTRAORDINARIO y ESPECIAL son sinónimos: algo fuera de lo normal y muy admirable."},
+  {tp:"sin",t:"Compartir es una de las cosas más HERMOSAS. ¿Cuál es el sinónimo de HERMOSO?",hl:"HERMOSAS",a:["Feo","Bonito","Pequeño","Viejo"],c:1,fb:"HERMOSO y BONITO son sinónimos: los dos describen algo lindo, agradable y que nos gusta ver."}
+];
+
+const LBLS=["A","B","C","D"],LCOLS=["acard-A","acard-B","acard-C","acard-D"];
+const MAX_XP=1500;
+let qzCur=0,qzXp=0,qzOk=0,qzNo=0,qzStk=0,qzBest=0,qzComp=0,qzSin=0,qzTmr=null,qzTl=20,qzDone=false;
+const qzRes=[];
+
+function qzSc(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on')}
+function qzGoRead(){qzSc('qz-read')}
+
+function qzStart(){
+  qzCur=0;qzXp=0;qzOk=0;qzNo=0;qzStk=0;qzBest=0;qzComp=0;qzSin=0;qzRes.length=0;
+  qzBuildDots();qzSc('qz-quiz');qzLoad();
+}
+
+function qzBuildDots(){
+  const c=document.getElementById('qz-dots');c.innerHTML='';
+  const w=Math.floor((680-4*(QZQ.length-1))/QZQ.length);
+  QZQ.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='dot dot-idle';d.id='qzd'+i;d.style.width=Math.max(16,w)+'px';
+    c.appendChild(d);
+  });
+}
+
+function qzUpdDots(){
+  QZQ.forEach((_,i)=>{
+    const d=document.getElementById('qzd'+i);if(!d)return;
+    if(i<qzRes.length){d.className='dot '+(qzRes[i]?'dot-ok':'dot-no')}
+    else if(i===qzCur){d.className='dot dot-active'}
+    else{d.className='dot dot-idle'}
+  });
+}
+
+function qzLoad(){
+  qzDone=false;
+  const q=QZQ[qzCur];
+  document.getElementById('qz-cnt').textContent=(qzCur+1)+' / '+QZQ.length;
+  document.getElementById('qz-xp').textContent=qzXp+' XP';
+  const sw=document.getElementById('qz-stk');
+  sw.innerHTML=qzStk>=2?'<span class="stk-b"><i class="ti ti-flame" aria-hidden="true"></i> x'+qzStk+'</span>':'';
+  const bd=document.getElementById('qz-badge');
+  bd.innerHTML=q.tp==='comp'
+    ?'<span class="qbadge qb-comp"><i class="ti ti-book" style="font-size:13px" aria-hidden="true"></i> Comprensión lectora</span>'
+    :'<span class="qbadge qb-sin"><i class="ti ti-alphabet-latin" style="font-size:13px" aria-hidden="true"></i> Sinónimos</span>';
+  const qt=document.getElementById('qz-qtext');
+  qt.innerHTML=q.hl?q.t.replace(q.hl,'<span class="wd">'+q.hl+'</span>'):q.t;
+  const ag=document.getElementById('qz-answers');ag.innerHTML='';
+  q.a.forEach((ans,i)=>{
+    const b=document.createElement('button');
+    b.className='acard '+LCOLS[i]+' pop';b.style.animationDelay=(i*.065)+'s';
+    b.innerHTML='<span class="albl">'+LBLS[i]+'</span>'+ans;
+    b.onclick=()=>qzPick(i);ag.appendChild(b);
+  });
+  document.getElementById('qz-fb').innerHTML='';
+  document.getElementById('qz-xpwrap').style.display='none';
+  const qc=document.getElementById('qz-qcard');qc.classList.remove('pop');void qc.offsetWidth;qc.classList.add('pop');
+  qzUpdDots();qzStartTmr();
+}
+
+function qzStartTmr(){
+  clearInterval(qzTmr);qzTl=20;qzUpdTmr();
+  qzTmr=setInterval(()=>{qzTl--;qzUpdTmr();if(qzTl<=0){clearInterval(qzTmr);if(!qzDone)qzTimeout()}},1000);
+}
+
+function qzUpdTmr(){
+  const p=(qzTl/20)*100;
+  const b=document.getElementById('qz-tbar');
+  b.style.width=p+'%';
+  b.style.background=qzTl>12?'#7F77DD':qzTl>6?'#BA7517':'#A32D2D';
+  document.getElementById('qz-tsec').textContent=qzTl+'s';
+}
+
+function qzTimeout(){
+  qzDone=true;qzNo++;qzStk=0;qzRes.push(false);
+  const q=QZQ[qzCur];qzReveal(-1);
+  qzFb(false,'¡Se acabó el tiempo! La respuesta correcta era '+LBLS[q.c]+': '+q.a[q.c]+'. '+q.fb);
+  qzNext();
+}
+
+function qzPick(i){
+  if(qzDone)return;qzDone=true;clearInterval(qzTmr);
+  const q=QZQ[qzCur],right=i===q.c;
+  if(right){
+    const bonus=Math.max(10,Math.round((qzTl/20)*60));
+    const stkBonus=qzStk>=2?30:0;
+    const gained=100+bonus+stkBonus;
+    qzXp+=gained;qzOk++;qzStk++;qzBest=Math.max(qzBest,qzStk);
+    if(q.tp==='comp')qzComp++;else qzSin++;
+    qzRes.push(true);
+    document.getElementById('qz-xp').textContent=qzXp+' XP';
+    const msgs=['¡Increíble! ','¡Excelente! ','¡Muy bien! ','¡Perfecto! ','¡Eres un crack! ','¡Genial! '];
+    qzFb(true,msgs[Math.floor(Math.random()*msgs.length)]+'+'+gained+' XP — '+q.fb);
+  } else {
+    qzNo++;qzStk=0;qzRes.push(false);
+    qzFb(false,'¡Casi! La respuesta correcta era '+LBLS[q.c]+': '+q.a[q.c]+'. '+q.fb);
+  }
+  qzReveal(i);qzShowXpBar();qzNext();
+}
+
+function qzReveal(sel){
+  const q=QZQ[qzCur];
+  document.querySelectorAll('.acard').forEach((c,i)=>{
+    c.style.cursor='default';c.onclick=null;
+    c.className='acard '+(i===q.c?'is-rev':i===sel?'is-no':'is-dim');
+  });
+}
+
+function qzFb(good,msg){
+  const a=document.getElementById('qz-fb');
+  const ic=good?'ti-circle-check':'ti-circle-x';
+  a.innerHTML='<div class="fb '+(good?'fb-ok':'fb-no')+'"><i class="ti '+ic+' fb-ico" aria-hidden="true"></i><span>'+msg+'</span></div>';
+}
+
+function qzShowXpBar(){
+  const w=document.getElementById('qz-xpwrap');w.style.display='block';
+  const pct=Math.min(100,Math.round((qzXp/MAX_XP)*100));
+  document.getElementById('qz-xppct').textContent=pct+'%';
+  setTimeout(()=>{document.getElementById('qz-xpbar').style.width=pct+'%'},60);
+}
+
+function qzNext(){
+  setTimeout(()=>{
+    qzUpdDots();qzCur++;
+    if(qzCur<QZQ.length)qzLoad();else qzShowEnd();
+  },3500);
+}
+
+function qzShowEnd(){
+  document.getElementById('qz-fxp').textContent=qzXp;
+  document.getElementById('qz-tok').textContent=qzOk;
+  document.getElementById('qz-tno').textContent=qzNo;
+  document.getElementById('qz-tstk').textContent=qzBest;
+  document.getElementById('qz-comp').textContent=qzComp+' / 5';
+  document.getElementById('qz-sin').textContent=qzSin+' / 5';
+  const p=qzOk/QZQ.length;
+  let rank,msg;
+  if(p===1){rank='Lector Experto';msg='¡Perfecto absoluto! Comprendes los textos de maravilla y dominas los sinónimos. ¡Eres increíble!'}
+  else if(p>=.8){rank='Lector Avanzado';msg='¡Qué buen trabajo! Entiendes muy bien lo que lees y conoces muchos sinónimos. ¡Sigue así!'}
+  else if(p>=.6){rank='Lector en Progreso';msg='¡Muy bien! Cada día que lees aprendes más. Practica un poco más y serás un experto muy pronto.'}
+  else if(p>=.4){rank='Lector Aprendiz';msg='¡Buen intento! Te recomendamos leer el cuento de nuevo y volver a intentarlo. ¡Tú puedes!'}
+  else{rank='Sigue Practicando';msg='¡No te rindas! Vuelve a leer el cuento con calma y presta atención a las palabras moradas. ¡Ánimo!'}
+  document.getElementById('qz-rank').textContent=rank;
+  document.getElementById('qz-rmsg').textContent=msg;
+  qzSc('qz-end');
+}
+
+function qzRestart(){qzSc('qz-cover')}
+</script>
